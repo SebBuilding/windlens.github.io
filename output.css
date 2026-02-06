@@ -1738,6 +1738,15 @@ body {
   background: #0b1f3f;
 }
 
+.wl-chart-size {
+  width: min(70%, 980px);
+  margin: 0 auto;
+}
+
+.wl-chart-size .wl-chart {
+  width: 100%;
+}
+
 .wl-chart {
   display: block;
   width: 100%;
@@ -1745,19 +1754,19 @@ body {
 }
 
 .wl-chart-scroll {
-  animation: wl-scroll 18s linear infinite;
+  animation: wl-scroll 24s linear infinite;
   transform-box: fill-box;
   transform-origin: 0 0;
 }
 
 .wl-candle-up {
-  fill: #7bd46a;
-  stroke: #7bd46a;
+  fill: #508dc8;
+  stroke: #508dc8;
 }
 
 .wl-candle-down {
-  fill: #ff6b57;
-  stroke: #ff6b57;
+  fill: #13538a;
+  stroke: #13538a;
 }
 
 @keyframes wl-scroll {
@@ -1765,12 +1774,18 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-600px);
+    transform: translateX(-1200px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .wl-chart-scroll {
     animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .wl-chart-size {
+    width: 100%;
   }
 }
