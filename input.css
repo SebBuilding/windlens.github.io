@@ -61,6 +61,15 @@ body {
     background: var(--wl-accent-dark);
 }
 
+.wl-btn-dark {
+    background: #0c2c57;
+    color: #fff;
+}
+
+.wl-btn-dark:hover {
+    background: #09264d;
+}
+
 .wl-outline {
     border-color: rgba(9, 38, 77, 0.4);
     color: var(--wl-text);
