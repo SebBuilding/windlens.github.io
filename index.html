@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>agentix - PrebuiltUI</title>
-    <link rel="stylesheet" href="./output.css?v=20260206-2">
+    <link rel="stylesheet" href="./output.css?v=20260206-3">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 </head>
 
 <body style="background:#fafcff;color:#09264d">
     <nav
-        class="sticky top-0 z-50 flex items-center justify-between w-full h-18 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur wl-nav">
+        class="sticky top-0 z-50 flex items-center justify-between w-full min-h-[120px] px-6 py-4 md:px-16 lg:px-24 xl:px-32 backdrop-blur wl-nav">
         <a href="#!">
-            <img class="h-9 w-auto" width="138" height="36" alt="WindLens logo" src="./assets/WindLens_logo_white.png" />
+            <img class="h-[108px] w-auto" alt="WindLens logo" src="./assets/WindLens_logo_white.png" />
         </a>
         <div class="hidden lg:flex items-center gap-8 transition duration-500">
             <a href="#creations" class="wl-nav-link transition">
@@ -80,9 +80,158 @@
                 Book a call
             </a>
         </div>
-        <figure class="relative w-full h-full [perspective:800px] mt-16 max-w-4xl mx-auto flex flex-col items-center justify-center">
-            <div class="relative [transform-style:preserve-3d] w-full max-w-4xl">
-                <img class="w-full rounded-[15px] will-change-transform [transform:translateZ(0)]" alt="hero section showcase" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-2.png" />
+        <figure class="relative w-full h-full [perspective:800px] mt-16 max-w-5xl mx-auto flex flex-col items-center justify-center">
+            <div class="relative [transform-style:preserve-3d] w-full max-w-5xl">
+                <div class="wl-chart-frame">
+                    <svg class="wl-chart" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live market activity preview">
+                        <defs>
+                            <pattern id="wl-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                            </pattern>
+                            <linearGradient id="wl-glow" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#1f5aa6" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#0b1f3f" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1200" height="520" rx="22" fill="#0b1f3f"/>
+                        <rect width="1200" height="520" rx="22" fill="url(#wl-grid)"/>
+                        <rect width="1200" height="520" rx="22" fill="url(#wl-glow)"/>
+                        <g class="wl-chart-scroll">
+                            <g class="wl-candles">
+                                <g transform="translate(30 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="180" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(66 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="200" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(102 0)">
+                                    <line class="wl-candle-up" x1="0" y1="100" x2="0" y2="340" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(138 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="310" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(174 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="210" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(210 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(246 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="390" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(282 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="330" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(318 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(354 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="300" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(390 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="290" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="60" rx="3"/>
+                                </g>
+                                <g transform="translate(426 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="110" rx="3"/>
+                                </g>
+                                <g transform="translate(462 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(498 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(534 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="400" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="240" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(570 0)">
+                                    <line class="wl-candle-down" x1="0" y1="160" x2="0" y2="420" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="260" width="16" height="120" rx="3"/>
+                                </g>
+                            </g>
+                            <g class="wl-candles" transform="translate(600 0)">
+                                <g transform="translate(30 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="180" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(66 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="200" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(102 0)">
+                                    <line class="wl-candle-up" x1="0" y1="100" x2="0" y2="340" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(138 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="310" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(174 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="210" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(210 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(246 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="390" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(282 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="330" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(318 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(354 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="300" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(390 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="290" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="60" rx="3"/>
+                                </g>
+                                <g transform="translate(426 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="110" rx="3"/>
+                                </g>
+                                <g transform="translate(462 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(498 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(534 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="400" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="240" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(570 0)">
+                                    <line class="wl-candle-down" x1="0" y1="160" x2="0" y2="420" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="260" width="16" height="120" rx="3"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
             </div>
         </figure>
     </section>
@@ -370,7 +519,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
             <div class="sm:col-span-2 lg:col-span-1">
                 <a href="#!">
-                <img class="h-9 w-auto" width="138" height="36" alt="WindLens logo" src="./assets/WindLens_logo_blue.png"></a>
+                <img class="h-[108px] w-auto" alt="WindLens logo" src="./assets/WindLens_logo_blue.png"></a>
             </div>
             <div class="flex flex-col lg:items-center lg:justify-center">
                 <div class="flex flex-col text-sm space-y-2.5">

@@ -75,6 +75,51 @@ body {
     color: var(--wl-text);
 }
 
+.wl-chart-frame {
+    border: 2px solid rgba(9, 38, 77, 0.25);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 28px 80px rgba(12, 44, 87, 0.18);
+    background: #0b1f3f;
+}
+
+.wl-chart {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wl-chart-scroll {
+    animation: wl-scroll 18s linear infinite;
+    transform-box: fill-box;
+    transform-origin: 0 0;
+}
+
+.wl-candle-up {
+    fill: #7bd46a;
+    stroke: #7bd46a;
+}
+
+.wl-candle-down {
+    fill: #ff6b57;
+    stroke: #ff6b57;
+}
+
+@keyframes wl-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-600px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wl-chart-scroll {
+        animation: none;
+    }
+}
+
 button {
     @apply cursor-pointer;
 }
