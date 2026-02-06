@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>agentix - PrebuiltUI</title>
-    <link rel="stylesheet" href="./output.css?v=20260206">
+    <link rel="stylesheet" href="./output.css?v=20260206-2">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 </head>
 
@@ -13,7 +13,7 @@
     <nav
         class="sticky top-0 z-50 flex items-center justify-between w-full h-18 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur wl-nav">
         <a href="#!">
-            <img class="h-9 w-auto" width="138" height="36" alt="logo" src="./assets/logo.svg" />
+            <img class="h-9 w-auto" width="138" height="36" alt="WindLens logo" src="./assets/WindLens_logo_white.png" />
         </a>
         <div class="hidden lg:flex items-center gap-8 transition duration-500">
             <a href="#creations" class="wl-nav-link transition">
@@ -28,16 +28,6 @@
             <a href="#contact" class="wl-nav-link transition">
                 Contact
             </a>
-        </div>
-        <div class="hidden lg:block space-x-3">
-            <button
-                class="px-6 py-2 wl-btn transition rounded-md active:scale-95">
-                Get started
-            </button>
-            <button
-                class="wl-outline transition px-6 py-2 border rounded-md active:scale-95">
-                Login
-            </button>
         </div>
         <button class="lg:hidden active:scale-90 transition" id="menu-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -86,16 +76,9 @@
             Our platform helps you build, test, and deliver faster — so you can focus on what matters.
         </p>
         <div class="flex items-center gap-4 mt-8">
-            <button class="flex items-center gap-2 wl-btn transition active:scale-95 rounded-lg px-7 h-11">
-                Get started
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-5" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                </svg>
-            </button>
-            <button class="border wl-outline active:scale-95 transition rounded-lg px-8 h-11">
-                Book a demo
-            </button>
+            <a href="#contact" class="border wl-outline active:scale-95 transition rounded-lg px-8 h-11 flex items-center">
+                Book a call
+            </a>
         </div>
         <figure class="relative w-full h-full [perspective:800px] mt-16 max-w-4xl mx-auto flex flex-col items-center justify-center">
             <div class="relative [transform-style:preserve-3d] w-full max-w-4xl">
@@ -386,12 +369,8 @@
     <footer class="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-400 mt-40">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
             <div class="sm:col-span-2 lg:col-span-1">
-                <a href="https://prebuiltui.com?utm_source=agentix">
-                <img class="h-9 w-auto" width="138" height="36" alt="logo" src="./assets/logo.svg"></a>
-                <p class="text-sm/7 mt-6">
-                    PrebuiltUI is a free and open-source UI component library with over 300+
-                    beautifully crafted, customizable components built with Tailwind CSS.
-                </p>
+                <a href="#!">
+                <img class="h-9 w-auto" width="138" height="36" alt="WindLens logo" src="./assets/WindLens_logo_blue.png"></a>
             </div>
             <div class="flex flex-col lg:items-center lg:justify-center">
                 <div class="flex flex-col text-sm space-y-2.5">
@@ -400,13 +379,7 @@
                         About us
                     </a>
                     <a class="hover:text-slate-500 transition" href="#">
-                        Careers <span class="text-xs text-white bg-indigo-600 rounded-md ml-2 px-2 py-1">We’re hiring!</span>
-                    </a>
-                    <a class="hover:text-slate-500 transition" href="#">
                         Contact us
-                    </a>
-                    <a class="hover:text-slate-500 transition" href="#">
-                        Privacy policy
                     </a>
                 </div>
             </div>
