@@ -94,11 +94,32 @@ body {
 }
 
 .wl-logo-row img {
-    height: 52px;
-    width: 150px;
+    height: 60px;
+    width: auto;
+    max-width: 220px;
     object-fit: contain;
     filter: grayscale(10%);
     opacity: 0.9;
+}
+
+.wl-logo-romande {
+    height: 80px;
+}
+
+.wl-logo-wet {
+    height: 74px;
+}
+
+.wl-logo-eos {
+    height: 68px;
+}
+
+.wl-logo-alpiq {
+    height: 60px;
+}
+
+.wl-logo-neoen {
+    height: 60px;
 }
 
 .wl-quotes {
