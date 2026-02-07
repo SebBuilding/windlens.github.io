@@ -1739,6 +1739,103 @@ body {
   color: var(--wl-text);
 }
 
+.wl-logo-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 24px;
+  width: min(1000px, 92vw);
+  align-items: center;
+  justify-items: center;
+}
+
+.wl-logo-row img {
+  max-height: 46px;
+  width: auto;
+  max-width: 160px;
+  filter: grayscale(10%);
+  opacity: 0.9;
+}
+
+.wl-quotes {
+  width: min(900px, 92vw);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.wl-quote-track {
+  position: relative;
+  min-height: 140px;
+}
+
+.wl-quote-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 400ms ease, transform 400ms ease;
+  text-align: center;
+}
+
+.wl-quote-slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wl-quote-slide blockquote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(9, 38, 77, 0.9);
+}
+
+.wl-quote-slide figcaption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: rgba(9, 38, 77, 0.7);
+}
+
+.wl-quote-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(9, 38, 77, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.wl-quote-nav:hover {
+  background: rgba(9, 38, 77, 0.08);
+  border-color: rgba(9, 38, 77, 0.3);
+}
+
+.wl-quote-nav svg {
+  width: 20px;
+  height: 20px;
+  stroke: rgba(9, 38, 77, 0.9);
+  fill: none;
+  stroke-width: 2.2;
+}
+
+@media (max-width: 900px) {
+  .wl-logo-row {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .wl-quotes {
+    grid-template-columns: 1fr;
+  }
+
+  .wl-quote-nav {
+    display: none;
+  }
+}
+
 .wl-marquee {
   width: min(1100px, 92vw);
   overflow: hidden;
