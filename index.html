@@ -10,22 +10,12 @@
 </head>
 
 <body class="wl-page">
-    <nav class="wl-nav">
+    <nav class="wl-nav" id="site-header">
         <div class="wl-container wl-nav-inner">
-            <a href="#!" class="wl-logo-link" aria-label="WindLens home">
+            <a href="#top" class="wl-logo-link" aria-label="WindLens home">
                 <img class="wl-logo" alt="WindLens logo" src="./assets/WindLens_logo_white.png" />
             </a>
-            <div class="hidden lg:flex items-center gap-8 transition duration-500">
-                <a href="#creations" class="wl-nav-link transition">
-                    Product
-                </a>
-                <a href="#about" class="wl-nav-link transition">
-                    Results
-                </a>
-                <a href="#contact" class="wl-nav-link transition">
-                    Contact
-                </a>
-            </div>
+            <div class="hidden lg:flex items-center gap-8 transition duration-500" id="nav-desktop"></div>
             <button class="lg:hidden wl-icon-button" id="menu-button" aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -38,16 +28,8 @@
         </div>
     </nav>
 
-    <div id="nav-links" class="fixed inset-0 z-[100] wl-menu backdrop-blur flex flex-col items-center justify-center text-lg gap-8 lg:hidden transition-transform duration-400 -translate-x-full">
-        <a href="/#creations">
-            Product
-        </a>
-        <a href="/#about">
-            Results
-        </a>
-        <a href="/#contact">
-            Contact
-        </a>
+    <div id="nav-links" class="fixed inset-0 z-[120] wl-menu backdrop-blur flex flex-col items-center justify-center text-lg gap-8 lg:hidden transition-transform duration-400 -translate-x-full">
+        <div id="nav-mobile" class="flex flex-col items-center justify-center gap-8 text-lg"></div>
         <button id="close-menu" class="wl-icon-button" aria-label="Close menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -62,7 +44,7 @@
     <section class="wl-hero" id="top">
         <div class="wl-container wl-hero-grid">
             <div class="wl-hero-content">
-                <span class="wl-pill">WindLens Forecasting Suite</span>
+                <p class="wl-hero-kicker">Decision support for wind operators and market teams.</p>
                 <h1 class="wl-hero-title">
                     Unlock the true potential of your wind assets
                 </h1>
@@ -77,72 +59,85 @@
                         Explore product
                     </a>
                 </div>
-                <div class="wl-hero-metrics">
-                    <div class="wl-metric">
-                        <p class="wl-metric-value">[Metric]</p>
-                        <p class="wl-metric-label">Imbalance impact</p>
-                    </div>
-                    <div class="wl-metric">
-                        <p class="wl-metric-value">[Metric]</p>
-                        <p class="wl-metric-label">Capacity covered</p>
-                    </div>
-                    <div class="wl-metric">
-                        <p class="wl-metric-value">[Metric]</p>
-                        <p class="wl-metric-label">Data sources</p>
-                    </div>
-                </div>
+                <ul class="wl-hero-outcomes">
+                    <li>Short-term signals aligned to trading windows.</li>
+                    <li>Bias and risk context for better decisions.</li>
+                    <li>Clear actions for scheduling, curtailment, and reserves.</li>
+                </ul>
             </div>
             <div class="wl-hero-visual">
-                <div class="wl-chart-card" aria-hidden="true">
+                <div class="wl-chart-card wl-hero-visual-card" aria-label="Forecasting preview">
                     <div class="wl-chart-header">
                         <div>
-                            <p class="wl-chart-title">Forecast confidence</p>
-                            <p class="wl-chart-caption">Day-ahead production outlook</p>
+                            <p class="wl-chart-title">Forecast scenarios</p>
+                            <p class="wl-chart-caption">Illustrative view of uncertainty and drivers</p>
                         </div>
-                        <span class="wl-chip">Live</span>
+                        <span class="wl-chip">Illustrative</span>
                     </div>
-                    <svg class="wl-chart" viewBox="0 0 760 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forecast chart">
-                        <defs>
-                            <linearGradient id="wl-chart-surface" x1="0" x2="0" y1="0" y2="1">
-                                <stop offset="0%" stop-color="#ffffff"/>
-                                <stop offset="100%" stop-color="#f1f6fb"/>
-                            </linearGradient>
-                            <linearGradient id="wl-area" x1="0" x2="0" y1="0" y2="1">
-                                <stop offset="0%" stop-color="#2bd4c7" stop-opacity="0.45"/>
-                                <stop offset="100%" stop-color="#2bd4c7" stop-opacity="0.05"/>
-                            </linearGradient>
-                            <linearGradient id="wl-line" x1="0" x2="1" y1="0" y2="0">
-                                <stop offset="0%" stop-color="#5bd6ff"/>
-                                <stop offset="100%" stop-color="#1b6cff"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="760" height="360" rx="22" fill="url(#wl-chart-surface)" />
-                        <g class="wl-chart-grid">
-                            <line x1="60" y1="70" x2="720" y2="70" />
-                            <line x1="60" y1="140" x2="720" y2="140" />
-                            <line x1="60" y1="210" x2="720" y2="210" />
-                            <line x1="60" y1="280" x2="720" y2="280" />
-                        </g>
-                        <path class="wl-chart-band" d="M60 240 C120 210, 180 230, 240 200 C300 170, 360 120, 420 140 C480 160, 540 110, 600 130 C660 150, 700 110, 720 90 L720 160 C700 200, 660 240, 600 220 C540 200, 480 250, 420 230 C360 210, 300 240, 240 260 C180 280, 120 270, 60 290 Z" fill="url(#wl-area)" />
-                        <path class="wl-chart-line" d="M60 250 C120 220, 180 240, 240 210 C300 180, 360 140, 420 150 C480 160, 540 120, 600 140 C660 160, 700 120, 720 100" stroke="url(#wl-line)" stroke-width="4" fill="none" stroke-linecap="round" />
-                        <g class="wl-chart-dots">
-                            <circle cx="120" cy="220" r="4" />
-                            <circle cx="240" cy="210" r="4" />
-                            <circle cx="360" cy="140" r="4" />
-                            <circle cx="480" cy="160" r="4" />
-                            <circle cx="600" cy="140" r="4" />
-                            <circle cx="700" cy="120" r="4" />
-                        </g>
-                    </svg>
-                    <div class="wl-chart-footer">
-                        <div>
-                            <p class="wl-chart-kpi">Forecast error</p>
-                            <p class="wl-chart-kpi-value">[Metric]</p>
+                    <div class="wl-hero-animation" role="img" aria-label="Animated forecast ribbon with uncertainty, drivers, and risk band">
+                        <div class="wl-hero-viewport">
+                            <div class="wl-hero-world-track">
+                                <div class="wl-hero-world">
+                                    <svg viewBox="0 0 1800 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="wl-hero-band" x1="0" x2="0" y1="0" y2="1">
+                                                <stop offset="0%" stop-color="#2bd4c7" stop-opacity="0.45"/>
+                                                <stop offset="100%" stop-color="#2bd4c7" stop-opacity="0.08"/>
+                                            </linearGradient>
+                                            <linearGradient id="wl-hero-line" x1="0" x2="1" y1="0" y2="0">
+                                                <stop offset="0%" stop-color="#5bd6ff"/>
+                                                <stop offset="100%" stop-color="#1b6cff"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path class="wl-hero-band" d="M0 220 C180 150, 320 260, 480 210 C640 160, 760 140, 920 190 C1080 230, 1200 210, 1360 180 C1520 150, 1640 200, 1800 170 L1800 240 C1640 270, 1520 290, 1360 250 C1200 220, 1080 240, 920 260 C760 280, 640 270, 480 300 C320 330, 180 300, 0 310 Z" fill="url(#wl-hero-band)"/>
+                                        <path class="wl-hero-line" d="M0 230 C180 170, 320 260, 480 220 C640 180, 760 160, 920 210 C1080 240, 1200 220, 1360 190 C1520 160, 1640 210, 1800 180" stroke="url(#wl-hero-line)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                        <g class="wl-hero-scenarios">
+                                            <path d="M0 260 C180 220, 320 290, 480 250 C640 210, 760 200, 920 240 C1080 270, 1200 250, 1360 220 C1520 190, 1640 240, 1800 210" />
+                                            <path d="M0 210 C180 140, 320 230, 480 190 C640 150, 760 130, 920 170 C1080 200, 1200 180, 1360 150 C1520 120, 1640 170, 1800 140" />
+                                        </g>
+                                        <g class="wl-hero-events">
+                                            <g class="wl-event wl-event-uncertainty" transform="translate(520 70)">
+                                                <rect width="140" height="32" rx="16" />
+                                                <text x="70" y="21" text-anchor="middle">UNCERTAINTY ↑</text>
+                                            </g>
+                                            <g class="wl-event wl-event-risk" transform="translate(980 180)">
+                                                <path d="M0 24 L12 0 L24 24 Z" />
+                                                <text x="40" y="18">RISK</text>
+                                            </g>
+                                            <g class="wl-event wl-event-driver" transform="translate(1320 110)">
+                                                <rect width="90" height="28" rx="14" />
+                                                <text x="45" y="18" text-anchor="middle">WAKE</text>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="wl-hero-world" aria-hidden="true">
+                                    <svg viewBox="0 0 1800 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path class="wl-hero-band" d="M0 220 C180 150, 320 260, 480 210 C640 160, 760 140, 920 190 C1080 230, 1200 210, 1360 180 C1520 150, 1640 200, 1800 170 L1800 240 C1640 270, 1520 290, 1360 250 C1200 220, 1080 240, 920 260 C760 280, 640 270, 480 300 C320 330, 180 300, 0 310 Z" fill="url(#wl-hero-band)"/>
+                                        <path class="wl-hero-line" d="M0 230 C180 170, 320 260, 480 220 C640 180, 760 160, 920 210 C1080 240, 1200 220, 1360 190 C1520 160, 1640 210, 1800 180" stroke="url(#wl-hero-line)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                        <g class="wl-hero-scenarios">
+                                            <path d="M0 260 C180 220, 320 290, 480 250 C640 210, 760 200, 920 240 C1080 270, 1200 250, 1360 220 C1520 190, 1640 240, 1800 210" />
+                                            <path d="M0 210 C180 140, 320 230, 480 190 C640 150, 760 130, 920 170 C1080 200, 1200 180, 1360 150 C1520 120, 1640 170, 1800 140" />
+                                        </g>
+                                        <g class="wl-hero-events">
+                                            <g class="wl-event wl-event-uncertainty" transform="translate(520 70)">
+                                                <rect width="140" height="32" rx="16" />
+                                                <text x="70" y="21" text-anchor="middle">UNCERTAINTY ↑</text>
+                                            </g>
+                                            <g class="wl-event wl-event-risk" transform="translate(980 180)">
+                                                <path d="M0 24 L12 0 L24 24 Z" />
+                                                <text x="40" y="18">RISK</text>
+                                            </g>
+                                            <g class="wl-event wl-event-driver" transform="translate(1320 110)">
+                                                <rect width="90" height="28" rx="14" />
+                                                <text x="45" y="18" text-anchor="middle">WAKE</text>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="wl-chart-kpi">Bias corrected</p>
-                            <p class="wl-chart-kpi-value">[Metric]</p>
-                        </div>
+                        <div class="wl-risk-glow" aria-hidden="true"></div>
                     </div>
                 </div>
             </div>
@@ -150,10 +145,11 @@
     </section>
 
     <!-- Our Creations Section -->
-    <section class="wl-section" id="creations">
+    <section class="wl-section" id="product">
         <div class="wl-container">
             <div class="wl-section-header">
-                <h2 class="wl-section-title">Our product</h2>
+                <p class="wl-eyebrow">Product</p>
+                <h2 class="wl-section-title">Decision support suite</h2>
                 <p class="wl-section-subtitle">
                     Site-specific forecasts linked to market context and probabilistic risk profiles for clear actions per asset.
                 </p>
@@ -173,7 +169,7 @@
                             <h3 class="wl-feature-title">Forecasting</h3>
                             <p class="wl-feature-text">Site-specific modelling with wake effects delivers a stronger short-term signal for scheduling and intraday planning.</p>
                         </div>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-forecast">Click to see visualisations</button>
+                        <button class="wl-feature-cta" type="button" data-modal="feature-forecast">Learn more</button>
                     </div>
                 </article>
                 <article class="wl-feature-card">
@@ -191,7 +187,7 @@
                             <h3 class="wl-feature-title">Market understanding</h3>
                             <p class="wl-feature-text">Interpretable drivers reduce bias and improve trust in market signals for traders and schedulers.</p>
                         </div>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-market">Click to view explanations</button>
+                        <button class="wl-feature-cta" type="button" data-modal="feature-market">Learn more</button>
                     </div>
                 </article>
                 <article class="wl-feature-card">
@@ -208,7 +204,7 @@
                             <h3 class="wl-feature-title">Risk profile</h3>
                             <p class="wl-feature-text">Always-on updates surface changing confidence, guiding hedging, curtailment, and reserve decisions.</p>
                         </div>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-risk">Click to see risk views</button>
+                        <button class="wl-feature-cta" type="button" data-modal="feature-risk">Learn more</button>
                     </div>
                 </article>
             </div>
@@ -219,99 +215,124 @@
     <section class="wl-section" id="how-it-works">
         <div class="wl-container">
             <div class="wl-section-header">
-                <h2 class="wl-section-title">How it works</h2>
+                <p class="wl-eyebrow">How you use WindLens</p>
+                <h2 class="wl-section-title">From forecast to market action</h2>
                 <p class="wl-section-subtitle">
-                    Forecasts are only the start. The platform connects production signals to market actions.
+                    Forecasting is one input. WindLens turns it into clear decisions for operators and trading teams.
                 </p>
             </div>
-            <div class="wl-results-grid">
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M3 12h3l2 4 4-8 3 6 2-3h4" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Model the site</h3>
-                        <p>Combine turbine, terrain, and wake effects to predict near-term production.</p>
-                    </div>
+            <div class="wl-use-diagram" aria-label="Workflow and metrics summary">
+                <svg viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Workflow triangle">
+                    <defs>
+                        <linearGradient id="wl-circle-ring" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#5bd6ff"/>
+                            <stop offset="100%" stop-color="#1b6cff"/>
+                        </linearGradient>
+                    </defs>
+                    <line x1="170" y1="120" x2="730" y2="120" />
+                    <line x1="170" y1="120" x2="450" y2="440" />
+                    <line x1="730" y1="120" x2="450" y2="440" />
+                    <circle cx="170" cy="120" r="90" />
+                    <circle cx="730" cy="120" r="90" />
+                    <circle cx="450" cy="440" r="90" />
+                    <circle cx="450" cy="280" r="70" class="wl-use-center" />
+                    <text x="170" y="110" text-anchor="middle">Forecasting</text>
+                    <text x="170" y="135" text-anchor="middle">Uncertainty bands</text>
+                    <text x="730" y="110" text-anchor="middle">Market context</text>
+                    <text x="730" y="135" text-anchor="middle">Bias & exposure</text>
+                    <text x="450" y="430" text-anchor="middle">Risk profile</text>
+                    <text x="450" y="455" text-anchor="middle">Action signals</text>
+                    <text x="450" y="270" text-anchor="middle">[Metric]</text>
+                    <text x="450" y="292" text-anchor="middle">Imbalance impact</text>
+                    <text x="450" y="314" text-anchor="middle">[Metric] Capacity</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <!-- Who It's For Section -->
+    <section class="wl-section" id="who-its-for">
+        <div class="wl-container">
+            <div class="wl-section-header">
+                <p class="wl-eyebrow">Who it’s for</p>
+                <h2 class="wl-section-title">Built for the teams who act on forecasts</h2>
+                <p class="wl-section-subtitle">Operators, traders, and IPPs who need clear, decision-ready signals.</p>
+            </div>
+            <div class="wl-audience-grid">
+                <div class="wl-audience-card">
+                    <span class="wl-audience-icon">⚙</span>
+                    <h3>Operators</h3>
+                    <p>Plan dispatch, curtailment, and maintenance with confidence.</p>
                 </div>
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 3" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Read the market</h3>
-                        <p>Translate forecasts into imbalance exposure, bias, and reserve implications.</p>
-                    </div>
+                <div class="wl-audience-card">
+                    <span class="wl-audience-icon">↗</span>
+                    <h3>Traders & schedulers</h3>
+                    <p>Align day-ahead and intraday positions with risk context.</p>
                 </div>
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 12h14" />
-                            <path d="M12 5v14" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Act on insights</h3>
-                        <p>Support day-ahead and intraday actions that protect revenue and reduce risk.</p>
-                    </div>
+                <div class="wl-audience-card">
+                    <span class="wl-audience-icon">◯</span>
+                    <h3>IPPs</h3>
+                    <p>Optimise portfolio performance across assets and markets.</p>
+                </div>
+            </div>
+            <div class="wl-neutral-logos">
+                <p class="wl-neutral-label">In conversation with</p>
+                <div class="wl-neutral-logo-row">
+                    <img src="./assets/Logo_Neoen.svg.png" alt="Neoen logo">
+                    <img src="./assets/Romande_Energie_Logo.svg.png" alt="Romande Energie logo">
+                    <img src="./assets/WET-withoutbkg.png" alt="WET logo">
+                    <img src="./assets/EOS_Holding_logo.svg.png" alt="EOS Holding logo">
+                    <img src="./assets/Alpiq.png" alt="Alpiq logo">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="wl-section" id="about">
+    <!-- Contact Section -->
+    <section class="wl-section wl-section-alt" id="contact">
         <div class="wl-container">
-            <div class="wl-section-header">
-                <h2 class="wl-section-title">Results</h2>
-                <p class="wl-section-subtitle">
-                    Credibility-focused outcomes supported by transparent modelling and decision support.
-                </p>
-            </div>
-            <div class="wl-results-grid">
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M3 12h3l2 4 4-8 3 6 2-3h4" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Stronger short-term signal</h3>
-                        <p>Site-specific modelling with wake effects to improve near-term planning.</p>
+            <div class="wl-contact-card">
+                <div class="wl-contact-copy">
+                    <p class="wl-eyebrow">Get in touch</p>
+                    <h2 class="wl-section-title">Book a demo or ask a question</h2>
+                    <p class="wl-section-subtitle">
+                        Share your assets and market exposure. We’ll show how WindLens supports day-ahead and intraday actions.
+                    </p>
+                    <div class="wl-contact-actions">
+                        <a href="#contact-form" class="wl-btn-primary">Book a demo</a>
+                        <!-- TODO: Replace with a verified support email address. -->
+                        <a href="mailto:hello@windlens.ch" class="wl-btn-secondary-dark">Email us</a>
                     </div>
                 </div>
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 3" />
-                        </svg>
+                <form class="wl-form wl-form-compact" id="contact-form">
+                    <div>
+                        <label class="wl-label">
+                            Your name
+                        </label>
+                        <input placeholder="Enter your name" class="wl-input" type="text" name="name" required>
                     </div>
                     <div>
-                        <h3>Less bias, more trust</h3>
-                        <p>Interpretable drivers explain changes and strengthen confidence.</p>
+                        <label class="wl-label">
+                            Email
+                        </label>
+                        <input placeholder="Enter your email" class="wl-input" type="email" name="email" required>
                     </div>
-                </div>
-                <div class="wl-result-card">
-                    <div class="wl-result-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 12h14" />
-                            <path d="M12 5v14" />
-                        </svg>
+                    <div class="sm:col-span-2">
+                        <label class="wl-label">Message</label>
+                        <textarea name="message" rows="5" placeholder="Tell us about your assets and goals" class="wl-textarea" required></textarea>
                     </div>
-                    <div>
-                        <h3>Always-on monitoring</h3>
-                        <p>Rapid refresh cycles for continuous tracking and action.</p>
+                    <div class="wl-form-actions">
+                        <button type="submit" class="wl-btn-primary wl-btn-submit">
+                            Submit
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4.5" aria-hidden="true">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </button>
+                        <p class="wl-form-success" id="contact-success" role="status" aria-live="polite">Thanks — we’ll be in touch shortly.</p>
                     </div>
-                </div>
-            </div>
-            <div class="wl-section-header" style="margin-top:24px;">
-                <p class="wl-section-subtitle">[Placeholder: Add verified metrics here]</p>
+                </form>
             </div>
         </div>
     </section>
@@ -326,90 +347,6 @@
         </div>
     </section>
 
-    <!-- Trusted Companies Section -->
-    <section class="wl-section">
-        <div class="wl-container">
-            <div class="wl-section-header">
-                <h2 class="wl-section-title">Trusted companies</h2>
-                <p class="wl-section-subtitle">A growing network of partners across renewable energy.</p>
-            </div>
-            <div class="wl-logo-row">
-                <img class="wl-logo wl-logo-neoen" src="./assets/Logo_Neoen.svg.png" alt="Neoen logo">
-                <img class="wl-logo wl-logo-romande" src="./assets/Romande_Energie_Logo.svg.png" alt="Romande Energie logo">
-                <img class="wl-logo wl-logo-wet" src="./assets/WET-withoutbkg.png" alt="WET logo">
-                <img class="wl-logo wl-logo-eos" src="./assets/EOS_Holding_logo.svg.png" alt="EOS Holding logo">
-                <img class="wl-logo wl-logo-alpiq" src="./assets/Alpiq.png" alt="Alpiq logo">
-            </div>
-            <div class="wl-quotes">
-                <button class="wl-quote-nav wl-quote-prev" type="button" aria-label="Previous quote">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M15 6l-6 6 6 6" />
-                    </svg>
-                </button>
-                <div class="wl-quote-track">
-                    <figure class="wl-quote-slide is-active">
-                        <blockquote>“Add your partner quote here.”</blockquote>
-                        <figcaption>— Name, Company</figcaption>
-                    </figure>
-                    <figure class="wl-quote-slide">
-                        <blockquote>“Add your second partner quote here.”</blockquote>
-                        <figcaption>— Name, Company</figcaption>
-                    </figure>
-                    <figure class="wl-quote-slide">
-                        <blockquote>“Add your third partner quote here.”</blockquote>
-                        <figcaption>— Name, Company</figcaption>
-                    </figure>
-                    <figure class="wl-quote-slide">
-                        <blockquote>“Add your fourth partner quote here.”</blockquote>
-                        <figcaption>— Name, Company</figcaption>
-                    </figure>
-                </div>
-                <button class="wl-quote-nav wl-quote-next" type="button" aria-label="Next quote">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M9 6l6 6-6 6" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="wl-section" id="contact">
-        <div class="wl-container">
-            <div class="wl-section-header">
-                <h2 class="wl-section-title">Get in touch</h2>
-                <p class="wl-section-subtitle">
-                    Discuss your assets, market exposure, and how decision support can improve day-ahead and intraday actions.
-                </p>
-            </div>
-            <form class="wl-form">
-                <div>
-                    <label class="wl-label">
-                        Your name
-                    </label>
-                    <input placeholder="Enter your name" class="wl-input" type="text" name="name">
-                </div>
-                <div>
-                    <label class="wl-label">
-                        Email id
-                    </label>
-                    <input placeholder="Enter your email" class="wl-input" type="email" name="email">
-                </div>
-                <div class="sm:col-span-2">
-                    <label class="wl-label">Message</label>
-                    <textarea name="message" rows="6" placeholder="Enter your message" class="wl-textarea"></textarea>
-                </div>
-                <button type="submit" class="wl-btn-primary wl-btn-submit">
-                    Submit
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4.5" aria-hidden="true">
-                        <path d="M7 7h10v10"></path>
-                        <path d="M7 17 17 7"></path>
-                    </svg>
-                </button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer Section -->
     <footer class="wl-footer">
         <div class="wl-container wl-footer-inner">
@@ -421,7 +358,7 @@
             <div class="wl-footer-links">
                 <h2 class="wl-footer-title">Company</h2>
                 <p class="wl-footer-link">Decision support for wind operators and power-market teams.</p>
-                <a class="wl-footer-link" href="#about">About us</a>
+                <a class="wl-footer-link" href="#how-it-works">How it works</a>
                 <a class="wl-footer-link" href="#contact">Contact us</a>
             </div>
         </div>
@@ -440,12 +377,13 @@
             <div class="wl-modal-grid">
                 <img src="./assets/First_image.png" alt="Site specific forecasts" />
                 <div>
+                    <p class="wl-modal-eyebrow">Visualisations</p>
                     <h3 id="feature-forecast-title">Forecasting</h3>
-                    <p>Site-specific modelling with wake effects delivers a stronger short-term signal for scheduling, intraday decisions, and reserve planning.</p>
-                    <ul>
-                        <li>Local terrain and wake effects</li>
-                        <li>Short-term signal clarity</li>
-                        <li>Decision-ready outputs</li>
+                    <p class="wl-modal-text">See the forecast line, confidence bands, and observed baseline aligned to scheduling windows.</p>
+                    <ul class="wl-modal-list">
+                        <li>Site-specific signal with wake effects</li>
+                        <li>Confidence ranges by lead time</li>
+                        <li>Observed vs forecast comparison</li>
                     </ul>
                 </div>
             </div>
@@ -464,12 +402,13 @@
             <div class="wl-modal-grid">
                 <img src="./assets/Second_image.png" alt="Market level understanding" />
                 <div>
+                    <p class="wl-modal-eyebrow">Visualisations</p>
                     <h3 id="feature-market-title">Market understanding</h3>
-                    <p>Interpretable drivers reduce bias and improve trust in market signals, supporting traders and schedulers across day-ahead and intraday windows.</p>
-                    <ul>
-                        <li>Driver-level explanations</li>
-                        <li>Bias and drift awareness</li>
-                        <li>Clear decision context</li>
+                    <p class="wl-modal-text">Interpretable drivers explain why the forecast shifted and how market exposure is changing.</p>
+                    <ul class="wl-modal-list">
+                        <li>Top drivers and impact markers</li>
+                        <li>Bias and drift indicators</li>
+                        <li>Decision context for traders</li>
                     </ul>
                 </div>
             </div>
@@ -488,15 +427,30 @@
             <div class="wl-modal-grid">
                 <img src="./assets/Third_image.png" alt="Recommendations based on risk profile" />
                 <div>
+                    <p class="wl-modal-eyebrow">Visualisations</p>
                     <h3 id="feature-risk-title">Risk profile</h3>
-                    <p>Always-on updates surface changing confidence, guiding hedging, curtailment, and reserve decisions with clear risk context.</p>
-                    <ul>
-                        <li>Confidence-driven actions</li>
-                        <li>Rapid refresh cycles</li>
-                        <li>Continuous monitoring</li>
+                    <p class="wl-modal-text">Track confidence shifts and risk posture changes for hedging, curtailment, and reserve planning.</p>
+                    <ul class="wl-modal-list">
+                        <li>Risk bands and alerts</li>
+                        <li>Rapid refresh monitoring</li>
+                        <li>Action guidance by profile</li>
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="wl-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="wl-lightbox-overlay" data-lightbox-close></div>
+        <div class="wl-lightbox-content">
+            <button class="wl-lightbox-close" type="button" data-lightbox-close aria-label="Close image">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 6 6 18" />
+                    <path d="M6 6l12 12" />
+                </svg>
+            </button>
+            <img id="lightbox-image" alt="Expanded visual" />
         </div>
     </div>
 

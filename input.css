@@ -58,11 +58,25 @@ textarea:focus-visible {
 
 .wl-section {
     padding: 96px 0 0;
+    scroll-margin-top: 110px;
 }
 
 .wl-section-header {
     text-align: center;
     margin-bottom: 44px;
+}
+
+.wl-section-alt {
+    background: rgba(11, 31, 51, 0.03);
+    padding-bottom: 96px;
+}
+
+.wl-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wl-ink-muted);
+    margin-bottom: 12px;
 }
 
 .wl-section-title {
@@ -91,11 +105,11 @@ textarea:focus-visible {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 96px;
 }
 
 .wl-logo {
-    height: 64px;
+    height: 96px;
     width: auto;
     max-width: 240px;
     object-fit: contain;
@@ -109,16 +123,30 @@ textarea:focus-visible {
 .wl-logo-link {
     display: inline-flex;
     align-items: center;
+    gap: 12px;
 }
 
 .wl-nav-link {
     color: rgba(255, 255, 255, 0.92);
     font-weight: 500;
     letter-spacing: 0.01em;
+    font-size: 0.98rem;
+    position: relative;
 }
 
 .wl-nav-link:hover {
     color: #fff;
+}
+
+.wl-nav-link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: #5bd6ff;
+    border-radius: 999px;
 }
 
 .wl-icon-button {
@@ -196,18 +224,37 @@ textarea:focus-visible {
     margin-top: 24px;
 }
 
-.wl-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    padding: 0 16px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 0.85rem;
+.wl-hero-kicker {
+    font-size: 0.95rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 14px;
+}
+
+.wl-hero-outcomes {
+    margin-top: 28px;
+    display: grid;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1rem;
+}
+
+.wl-hero-outcomes li {
+    list-style: none;
+    position: relative;
+    padding-left: 18px;
+}
+
+.wl-hero-outcomes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #2bd4c7;
 }
 
 .wl-btn-primary {
@@ -293,6 +340,8 @@ textarea:focus-visible {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .wl-chart-title {
@@ -312,54 +361,23 @@ textarea:focus-visible {
     color: #0d6f6a;
     font-weight: 600;
     font-size: 0.8rem;
+    border: 1px solid rgba(43, 212, 199, 0.28);
 }
 
-.wl-chart {
-    width: 100%;
-    height: auto;
-    background: #f7f9fc;
-    border-radius: 18px;
-    overflow: visible;
+.wl-chart-controls {
+    display: flex;
+    gap: 8px;
 }
 
-.wl-chart-grid line {
-    stroke: rgba(11, 31, 51, 0.08);
-    stroke-width: 1;
+.wl-chip.is-active {
+    background: rgba(21, 88, 214, 0.16);
+    border-color: rgba(21, 88, 214, 0.4);
+    color: #0f3f8a;
 }
 
-.wl-chart-band {
-    opacity: 0.28;
-    transform-origin: left center;
-    transform-box: fill-box;
-    animation: wl-band-fade 6s ease-in-out infinite;
-}
+/* Removed legacy chart styling */
 
-.wl-chart-line {
-    stroke-dasharray: 600;
-    stroke-dashoffset: 600;
-    animation: wl-line-draw 2.6s ease forwards;
-}
-
-.wl-chart-dots circle {
-    fill: #0f3f8a;
-    opacity: 0.8;
-}
-
-.wl-chart-footer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.wl-chart-kpi {
-    font-size: 0.85rem;
-    color: var(--wl-ink-muted);
-}
-
-.wl-chart-kpi-value {
-    font-weight: 600;
-}
+/* Removed legacy chart legend/tooltip styles */
 
 .wl-feature-grid {
     display: grid;
@@ -407,6 +425,7 @@ textarea:focus-visible {
     padding: 20px 22px 24px;
     display: grid;
     gap: 12px;
+    height: 100%;
 }
 
 .wl-feature-icon {
@@ -453,6 +472,7 @@ textarea:focus-visible {
     color: var(--wl-primary);
     font-weight: 600;
     transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: auto;
 }
 
 .wl-feature-cta:hover {
@@ -787,7 +807,7 @@ textarea:focus-visible {
 
 .wl-modal-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1.6fr 1fr;
     gap: 20px;
     align-items: center;
 }
@@ -796,19 +816,29 @@ textarea:focus-visible {
     width: 100%;
     border-radius: 16px;
     object-fit: cover;
+    min-height: 300px;
+    cursor: zoom-in;
 }
 
 .wl-modal-grid h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 12px;
 }
 
-.wl-modal-grid p {
+.wl-modal-text {
     color: var(--wl-ink-muted);
     line-height: 1.7;
 }
 
-.wl-modal-grid ul {
+.wl-modal-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--wl-ink-muted);
+    margin-bottom: 10px;
+}
+
+.wl-modal-list {
     margin-top: 16px;
     padding-left: 18px;
     color: var(--wl-ink);
@@ -820,6 +850,405 @@ textarea:focus-visible {
 
 .wl-no-scroll {
     overflow: hidden;
+}
+
+.wl-hero-visual-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.wl-hero-animation {
+    position: relative;
+    height: 320px;
+    border-radius: 18px;
+    background: #f7f9fc;
+    overflow: hidden;
+}
+
+.wl-hero-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wl-hero-world-track {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    animation: wl-world-pan 12s linear infinite;
+}
+
+.wl-hero-world {
+    width: 50%;
+    height: 100%;
+}
+
+.wl-hero-world svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wl-hero-band {
+    animation: wl-band-breathe 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.wl-hero-line {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 0;
+    animation: wl-line-flow 6s linear infinite;
+}
+
+.wl-hero-scenarios path {
+    fill: none;
+    stroke: rgba(11, 31, 51, 0.12);
+    stroke-width: 2;
+}
+
+.wl-hero-events rect,
+.wl-hero-events path {
+    fill: rgba(11, 31, 51, 0.85);
+}
+
+.wl-hero-events text {
+    font-size: 12px;
+    fill: #fff;
+    font-family: var(--font-sans);
+    letter-spacing: 0.08em;
+}
+
+.wl-event-uncertainty rect {
+    fill: rgba(255, 184, 77, 0.95);
+}
+
+.wl-event-uncertainty text {
+    fill: #1d1d1d;
+}
+
+.wl-event-risk path {
+    fill: rgba(255, 98, 80, 0.95);
+}
+
+.wl-event-risk text {
+    fill: rgba(11, 31, 51, 0.92);
+    font-weight: 600;
+}
+
+.wl-event-driver rect {
+    fill: rgba(43, 212, 199, 0.9);
+}
+
+.wl-event-driver text {
+    fill: #0b1f33;
+    font-weight: 600;
+}
+
+.wl-risk-glow {
+    position: absolute;
+    right: 24px;
+    bottom: 40px;
+    width: 180px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255, 132, 78, 0.35), rgba(255, 132, 78, 0));
+    filter: blur(6px);
+    opacity: 0;
+    animation: wl-risk-pulse 6s ease-in-out infinite;
+    animation-delay: 2.5s;
+}
+
+.wl-use-diagram {
+    margin: 48px 0;
+    padding: 24px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 51, 0.08);
+    box-shadow: 0 20px 50px rgba(13, 35, 66, 0.12);
+}
+
+.wl-use-diagram svg {
+    width: 100%;
+    height: auto;
+}
+
+.wl-use-diagram line {
+    stroke: rgba(11, 31, 51, 0.12);
+    stroke-width: 2;
+}
+
+.wl-use-diagram circle {
+    fill: #f7f9fc;
+    stroke: rgba(21, 88, 214, 0.35);
+    stroke-width: 2;
+}
+
+.wl-use-diagram .wl-use-center {
+    fill: #fff;
+    stroke: rgba(11, 31, 51, 0.12);
+}
+
+.wl-use-diagram text {
+    font-size: 18px;
+    fill: #0b1f33;
+}
+
+.wl-stepper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    position: relative;
+    padding-top: 24px;
+}
+
+.wl-stepper-line {
+    position: absolute;
+    top: 36px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: rgba(11, 31, 51, 0.12);
+}
+
+.wl-stepper-step {
+    position: relative;
+    padding: 24px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 51, 0.08);
+    box-shadow: 0 10px 24px rgba(13, 35, 66, 0.08);
+    text-align: left;
+}
+
+.wl-stepper-dot {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #2bd4c7;
+    box-shadow: 0 0 0 6px rgba(43, 212, 199, 0.2);
+}
+
+.wl-audience-card {
+    position: relative;
+    padding-top: 50px;
+}
+
+.wl-audience-icon {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: 1.1rem;
+    color: var(--wl-primary);
+}
+
+.wl-neutral-logos {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.wl-neutral-label {
+    font-size: 0.85rem;
+    color: var(--wl-ink-muted);
+    margin-bottom: 16px;
+}
+
+.wl-neutral-logo-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 18px;
+    align-items: center;
+    justify-items: center;
+}
+
+.wl-neutral-logo-row img {
+    height: 48px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+}
+
+
+.wl-metric-circles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    justify-items: center;
+}
+
+.wl-metric-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid rgba(21, 88, 214, 0.3);
+    background: radial-gradient(circle at top, rgba(21, 88, 214, 0.1), transparent 60%);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wl-metric-circle:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(21, 88, 214, 0.2);
+}
+
+.wl-metric-circle .wl-metric-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--wl-ink);
+}
+
+.wl-metric-circle .wl-metric-label {
+    font-size: 0.85rem;
+    color: var(--wl-ink-muted);
+}
+
+@keyframes wl-band-breathe {
+    0%, 100% { transform: scaleY(1); opacity: 0.65; }
+    50% { transform: scaleY(1.05); opacity: 0.85; }
+}
+
+@keyframes wl-scenario-fade {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes wl-chip-fade {
+    0%, 30% { opacity: 0; transform: translateY(4px); }
+    40%, 60% { opacity: 1; transform: translateY(0); }
+    80%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+
+@keyframes wl-line-flow {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -440; }
+}
+
+@keyframes wl-world-pan {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes wl-risk-pulse {
+    0%, 60%, 100% { opacity: 0; }
+    70% { opacity: 0.8; }
+}
+
+/* Replaced legacy timeline/outcomes styles */
+
+.wl-contact-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 32px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 51, 0.08);
+    box-shadow: 0 20px 50px rgba(13, 35, 66, 0.12);
+}
+
+.wl-contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.wl-btn-secondary-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 31, 51, 0.2);
+    color: var(--wl-ink);
+    font-weight: 600;
+    background: #fff;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.wl-btn-secondary-dark:hover {
+    background: rgba(11, 31, 51, 0.05);
+    transform: translateY(-1px);
+}
+
+.wl-form-compact {
+    margin-top: 0;
+}
+
+.wl-form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wl-form-success {
+    color: #0f3f8a;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.wl-lightbox {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 130;
+}
+
+.wl-lightbox.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wl-lightbox-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 31, 51, 0.72);
+}
+
+.wl-lightbox-content {
+    position: relative;
+    width: min(980px, 92vw);
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--wl-shadow);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+}
+
+.wl-lightbox-content img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 14px;
+}
+
+.wl-lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 31, 51, 0.1);
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wl-ink);
 }
 
 @keyframes wl-line-draw {
@@ -840,8 +1269,11 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .wl-chart-line,
-    .wl-chart-band {
+    .wl-hero-band,
+    .wl-hero-line,
+    .wl-hero-scenarios path,
+    .wl-risk-glow,
+    .wl-hero-world-track {
         animation: none;
     }
 }
@@ -859,6 +1291,28 @@ textarea:focus-visible {
     .wl-hero-actions {
         justify-content: center;
     }
+
+    .wl-stepper {
+        grid-template-columns: 1fr;
+    }
+
+    .wl-stepper-line {
+        left: 24px;
+        right: auto;
+        top: 40px;
+        bottom: 40px;
+        width: 2px;
+        height: auto;
+    }
+
+    .wl-stepper-dot {
+        top: 24px;
+        left: -12px;
+    }
+
+    .wl-use-diagram {
+        padding: 16px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -867,7 +1321,7 @@ textarea:focus-visible {
     }
 
     .wl-logo {
-        height: 52px;
+        height: 80px;
     }
 
     .wl-hero {
@@ -880,6 +1334,18 @@ textarea:focus-visible {
 
     .wl-section {
         padding-top: 72px;
+    }
+
+    .wl-section-alt {
+        padding-bottom: 72px;
+    }
+
+    .wl-hero-animation {
+        height: 240px;
+    }
+
+    .wl-modal-grid {
+        grid-template-columns: 1fr;
     }
 
     .wl-quotes {
