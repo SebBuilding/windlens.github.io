@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolutionising Wind Energy Forecasting</title>
+    <link rel="stylesheet" href="./output.css?v=20260206-11">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+</head>
+
+<body style="background:#fafcff;color:#09264d">
+    <nav
+        class="sticky top-0 z-50 flex items-center justify-between w-full px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur wl-nav" style="height:76px;">
+        <a href="#!">
+            <img class="h-[96px] w-auto" alt="WindLens logo" src="./assets/WindLens_logo_white.png" style="height:96px;width:auto;" />
+        </a>
+        <div class="hidden lg:flex items-center gap-8 transition duration-500">
+            <a href="#creations" class="wl-nav-link transition">
+                Product
+            </a>
+            <a href="#about" class="wl-nav-link transition">
+                Results
+            </a>
+            <a href="#contact" class="wl-nav-link transition">
+                Contact
+            </a>
+        </div>
+        <button class="lg:hidden active:scale-90 transition" id="menu-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-menu size-6.5" aria-hidden="true">
+                <path d="M4 5h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 19h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <div id="nav-links" class="fixed inset-0 z-[100] wl-menu backdrop-blur flex flex-col items-center justify-center text-lg gap-8 lg:hidden transition-transform duration-400 -translate-x-full">
+        <a href="/#creations">
+            Product
+        </a>
+        <a href="/#about">
+            Results
+        </a>
+        <a href="/#contact">
+            Contact
+        </a>
+        <button id="close-menu" class="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-slate-100 hover:bg-slate-200 transition text-black rounded-md flex">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-x" aria-hidden="true">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center wl-hero" style="padding-top:120px;">
+        <h1 class="text-center text-5xl leading-[68px] md:text-6xl md:leading-[70px] mt-4 font-semibold max-w-2xl">
+            Revolutionising wind energy forecasting
+        </h1>
+        <p class="text-center text-base max-w-lg mt-2 wl-muted">
+            Let our Machine Learning forecasts guide you in short term wind energy market optimisation
+        </p>
+        <div class="flex items-center gap-4 mt-8">
+            <a href="#contact" class="wl-btn-dark active:scale-95 transition rounded-lg px-8 h-11 flex items-center">
+                Book a call
+            </a>
+        </div>
+        <figure class="relative w-full h-full [perspective:800px] mt-16 max-w-5xl mx-auto flex flex-col items-center justify-center">
+            <div class="relative [transform-style:preserve-3d] w-full max-w-5xl">
+                <div class="wl-chart-frame wl-chart-size">
+                    <svg class="wl-chart" viewBox="0 0 1200 520" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live market activity preview">
+                        <defs>
+                            <pattern id="wl-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                            </pattern>
+                            <linearGradient id="wl-glow" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#1f5aa6" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#0b1f3f" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1200" height="520" rx="22" fill="rgba(12, 44, 87, 0.82)"/>
+                        <rect width="1200" height="520" rx="22" fill="url(#wl-grid)"/>
+                        <rect width="1200" height="520" rx="22" fill="url(#wl-glow)"/>
+                        <g class="wl-chart-scroll">
+                            <g class="wl-candles">
+                                <g transform="translate(30 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="180" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(66 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="200" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(102 0)">
+                                    <line class="wl-candle-up" x1="0" y1="100" x2="0" y2="340" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(138 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="310" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(174 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="210" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(210 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(246 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="390" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(282 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="330" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(318 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(354 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="300" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(390 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="290" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="60" rx="3"/>
+                                </g>
+                                <g transform="translate(426 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="110" rx="3"/>
+                                </g>
+                                <g transform="translate(462 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(498 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(534 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="400" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="240" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(570 0)">
+                                    <line class="wl-candle-down" x1="0" y1="160" x2="0" y2="420" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="260" width="16" height="120" rx="3"/>
+                                </g>
+                            </g>
+                            <g class="wl-candles" transform="translate(600 0)">
+                                <g transform="translate(30 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="180" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(66 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="200" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(102 0)">
+                                    <line class="wl-candle-up" x1="0" y1="100" x2="0" y2="340" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(138 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="310" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(174 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="210" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(210 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(246 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="390" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(282 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="330" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(318 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(354 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="300" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(390 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="290" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="60" rx="3"/>
+                                </g>
+                                <g transform="translate(426 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="110" rx="3"/>
+                                </g>
+                                <g transform="translate(462 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(498 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(534 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="400" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="240" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(570 0)">
+                                    <line class="wl-candle-down" x1="0" y1="160" x2="0" y2="420" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="260" width="16" height="120" rx="3"/>
+                                </g>
+                            </g>
+                            <g class="wl-candles" transform="translate(1200 0)">
+                                <g transform="translate(30 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="180" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(66 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="200" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(102 0)">
+                                    <line class="wl-candle-up" x1="0" y1="100" x2="0" y2="340" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(138 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="310" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(174 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="210" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(210 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(246 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="390" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(282 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="330" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(318 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="360" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="100" rx="3"/>
+                                </g>
+                                <g transform="translate(354 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="300" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="160" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(390 0)">
+                                    <line class="wl-candle-up" x1="0" y1="110" x2="0" y2="290" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="150" width="16" height="60" rx="3"/>
+                                </g>
+                                <g transform="translate(426 0)">
+                                    <line class="wl-candle-down" x1="0" y1="130" x2="0" y2="370" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="220" width="16" height="110" rx="3"/>
+                                </g>
+                                <g transform="translate(462 0)">
+                                    <line class="wl-candle-up" x1="0" y1="120" x2="0" y2="320" stroke-width="4" />
+                                    <rect class="wl-candle-up" x="-8" y="170" width="16" height="70" rx="3"/>
+                                </g>
+                                <g transform="translate(498 0)">
+                                    <line class="wl-candle-down" x1="0" y1="140" x2="0" y2="380" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="230" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(534 0)">
+                                    <line class="wl-candle-down" x1="0" y1="150" x2="0" y2="400" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="240" width="16" height="120" rx="3"/>
+                                </g>
+                                <g transform="translate(570 0)">
+                                    <line class="wl-candle-down" x1="0" y1="160" x2="0" y2="420" stroke-width="4" />
+                                    <rect class="wl-candle-down" x="-8" y="260" width="16" height="120" rx="3"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </figure>
+    </section>
+
+    <!-- Our Creations Section -->
+    <section class="flex flex-col items-center" id="creations">
+        <div class="flex flex-col items-center mt-32">
+            <h2 class="text-center text-4xl font-semibold max-w-2xl">
+                Our product
+            </h2>
+            <p class="text-center text-slate-400 max-w-lg mt-3">
+                From site specific to market level, gain valuable insights to gain precision and understand market bias
+            </p>
+        </div>
+        <div class="flex items-center gap-4 h-100 w-full max-w-5xl mt-18 mx-auto">
+            <div class="relative group flex-grow h-[400px] rounded-xl overflow-hidden hover:w-full w-56 transition-all duration-500">
+                <img class="h-full w-full object-cover object-center" alt="WindLens highlight one"
+                    src="./assets/First_image.png" />
+                <div class="absolute inset-0 flex flex-col justify-end p-10 text-white bg-black/50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                    <h1 class="text-3xl font-semibold">Site specific forecasts</h1>
+                    <p class="text-sm mt-2">
+                        Incorporating deep learning Machine Learning methods and wake modelling, our product delivers unprecedented accuracy
+                    </p>
+                </div>
+            </div>
+            <div class="relative group flex-grow h-[400px] rounded-xl overflow-hidden hover:w-full w-56 transition-all duration-500">
+                <img class="h-full w-full object-cover object-right" alt="WindLens highlight two"
+                    src="./assets/Second_image.png" />
+                <div class="absolute inset-0 flex flex-col justify-end p-10 text-white bg-black/50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                    <h1 class="text-3xl font-semibold">Market level understanding</h1>
+                    <p class="text-sm mt-2">
+                        Harnessing 20k+ weather station data and multiple weather models, our models are able to understand patterns in the weather to inform smarter trading decisions
+                    </p>
+                </div>
+            </div>
+            <div class="relative group flex-grow h-[400px] rounded-xl overflow-hidden hover:w-full w-56 transition-all duration-500">
+                <img class="h-full w-full object-cover object-center" alt="WindLens highlight three"
+                    src="./assets/Third_image.png" />
+                <div class="absolute inset-0 flex flex-col justify-end p-10 text-white bg-black/50 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                    <h1 class="text-3xl font-semibold">Recommendations based on risk profile</h1>
+                    <p class="text-sm mt-2">
+                        Understanding that not all customers are equal in risk appetite, our product delivers tailored advice on short term market optimisation using site specific and market analysis
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="flex flex-col items-center" id="about">
+        <div class="flex flex-col items-center mt-32">
+            <h2 class="text-center text-4xl font-semibold max-w-2xl">
+                Results
+            </h2>
+            <p class="text-center text-slate-400 max-w-lg mt-3">
+                Tested on 400MW of renewable capacity, we achieve 20% Imbalance Savings through three core aspects
+            </p>
+        </div>
+        <div class="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-8 md:px-0 mt-18">
+            <div class="py-10 border-b border-slate-700 md:py-0 md:border-r md:border-b-0 md:px-10">
+                <div class="size-10 p-2 bg-indigo-600/20 border border-indigo-600/30 rounded">
+                    <img alt="" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/flashEmoji.png">
+                </div>
+                <div class="mt-5 space-y-2">
+                    <h3 class="text-base font-medium text-slate-200">Better accuracy</h3>
+                    <p class="text-sm text-slate-400">Achieved through site specific wake modelling</p>
+                </div>
+            </div>
+            <div class="py-10 border-b border-slate-700 md:py-0 lg:border-r md:border-b-0 md:px-10">
+                <div class="size-10 p-2 bg-indigo-600/20 border border-indigo-600/30 rounded">
+                    <img alt="" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/colorsEmoji.png">
+                </div>
+                <div class="mt-5 space-y-2">
+                    <h3 class="text-base font-medium text-slate-200">Reduced bias</h3>
+                    <p class="text-sm text-slate-400">Achieved through extensive data analysis</p>
+                </div>
+            </div>
+            <div class="py-10 border-b border-slate-700 md:py-0 md:border-b-0 md:px-10">
+                <div class="size-10 p-2 bg-indigo-600/20 border border-indigo-600/30 rounded">
+                    <img alt="" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/aboutSection/puzzelEmoji.png">
+                </div>
+                <div class="mt-5 space-y-2">
+                    <h3 class="text-base font-medium text-slate-200">Faster updates</h3>
+                    <p class="text-sm text-slate-400">Achieved through lightweight ML architecture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Companies Section -->
+    <section class="flex flex-col items-center">
+        <div class="flex flex-col items-center mt-32">
+            <h2 class="text-center text-4xl font-semibold max-w-2xl" style="opacity: 1; transform: none;">Trusted companies</h2>
+            <p class="text-center text-slate-400 max-w-lg mt-3">A growing network of partners across renewable energy.</p>
+        </div>
+        <div class="wl-logo-row mt-16">
+            <img class="wl-logo wl-logo-neoen" src="./assets/Logo_Neoen.svg.png" alt="Neoen logo">
+            <img class="wl-logo wl-logo-romande" src="./assets/Romande_Energie_Logo.svg.png" alt="Romande Energie logo">
+            <img class="wl-logo wl-logo-wet" src="./assets/WET-withoutbkg.png" alt="WET logo">
+            <img class="wl-logo wl-logo-eos" src="./assets/EOS_Holding_logo.svg.png" alt="EOS Holding logo">
+            <img class="wl-logo wl-logo-alpiq" src="./assets/Alpiq.png" alt="Alpiq logo">
+        </div>
+        <div class="wl-quotes mt-16">
+            <button class="wl-quote-nav wl-quote-prev" type="button" aria-label="Previous quote">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 6l-6 6 6 6" />
+                </svg>
+            </button>
+            <div class="wl-quote-track">
+                <figure class="wl-quote-slide is-active">
+                    <blockquote>“Add your partner quote here.”</blockquote>
+                    <figcaption>— Name, Company</figcaption>
+                </figure>
+                <figure class="wl-quote-slide">
+                    <blockquote>“Add your second partner quote here.”</blockquote>
+                    <figcaption>— Name, Company</figcaption>
+                </figure>
+                <figure class="wl-quote-slide">
+                    <blockquote>“Add your third partner quote here.”</blockquote>
+                    <figcaption>— Name, Company</figcaption>
+                </figure>
+                <figure class="wl-quote-slide">
+                    <blockquote>“Add your fourth partner quote here.”</blockquote>
+                    <figcaption>— Name, Company</figcaption>
+                </figure>
+            </div>
+            <button class="wl-quote-nav wl-quote-next" type="button" aria-label="Next quote">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="flex flex-col items-center" id="contact">
+        <div class="flex flex-col items-center mt-32">
+            <h2 class="text-center text-4xl font-semibold max-w-2xl">
+                Get in touch
+            </h2>
+            <p class="text-center text-slate-400 max-w-lg mt-3">
+                A visual collection of
+                our most recent works - each piece crafted with intention, emotion, and style.</p>
+        </div>
+        <form class="grid sm:grid-cols-2 gap-3 sm:gap-5 max-w-3xl mx-auto text-slate-400 mt-16 w-full">
+            <div>
+                <label class="font-medium text-slate-200">
+                    Your name
+                </label>
+                <input placeholder="Enter your name" class="w-full mt-2 p-3 outline-none border border-slate-700 rounded-lg focus-within:ring-1 transition focus:ring-indigo-600" type="text" name="name">
+            </div>
+            <div>
+                <label class="font-medium text-slate-200">
+                    Email id
+                </label>
+                <input placeholder="Enter your email" class="w-full mt-2 p-3 outline-none border border-slate-700 rounded-lg focus-within:ring-1 transition focus:ring-indigo-600" type="email" name="email">
+            </div>
+            <div class="sm:col-span-2">
+                <label class="font-medium text-slate-200">Message</label>
+                <textarea name="message" rows="8" placeholder="Enter your message" class="resize-none w-full mt-2 p-3 outline-none rounded-lg focus-within:ring-1 transition focus:ring-indigo-600 border border-slate-700"></textarea>
+            </div>
+            <button type="submit" class="w-max flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full">
+                Submit
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4.5" aria-hidden="true">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                </svg>
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-400 mt-40">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-14">
+            <div>
+                <a href="#!">
+                <img class="h-[65px] w-auto" alt="WindLens logo" src="./assets/WindLens_logo_blue.png" style="height:65px;width:auto;"></a>
+            </div>
+            <div class="flex flex-col lg:items-center lg:justify-center">
+                <div class="flex flex-col text-sm space-y-2.5">
+                    <h2 class="font-semibold mb-5 text-white">Company</h2>
+                    <a class="hover:text-slate-500 transition" href="#">
+                        About us
+                    </a>
+                    <a class="hover:text-slate-500 transition" href="#">
+                        Contact us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+
+</html>
