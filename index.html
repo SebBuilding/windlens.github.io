@@ -16,7 +16,7 @@
                 <img class="wl-logo" alt="WindLens logo" src="./assets/WindLens_logo_white.png" />
             </a>
             <div class="hidden lg:flex items-center gap-8 transition duration-500" id="nav-desktop"></div>
-            <button class="lg:hidden wl-icon-button" id="menu-button" aria-label="Open menu">
+            <button class="lg:hidden wl-icon-button" id="menu-button" aria-label="Open menu" aria-controls="nav-overlay" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-menu size-6.5" aria-hidden="true">
@@ -28,16 +28,19 @@
         </div>
     </nav>
 
-    <div id="nav-links" class="fixed inset-0 z-[120] wl-menu backdrop-blur flex flex-col items-center justify-center text-lg gap-8 lg:hidden transition-transform duration-400 -translate-x-full">
-        <div id="nav-mobile" class="flex flex-col items-center justify-center gap-8 text-lg"></div>
-        <button id="close-menu" class="wl-icon-button" aria-label="Close menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-x" aria-hidden="true">
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path>
-            </svg>
-        </button>
+    <div id="nav-overlay" class="wl-nav-overlay" aria-hidden="true">
+        <div class="wl-nav-backdrop" data-nav-close></div>
+        <div class="wl-nav-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+            <button id="close-menu" class="wl-icon-button wl-nav-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-x" aria-hidden="true">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+            </button>
+            <div id="nav-mobile" class="wl-nav-list"></div>
+        </div>
     </div>
     
     <!-- Hero Section -->
@@ -55,7 +58,7 @@
                     <a href="#contact" class="wl-btn-primary">
                         Book a demo
                     </a>
-                    <a href="#creations" class="wl-btn-secondary">
+                    <a href="#product" class="wl-btn-secondary">
                         Explore product
                     </a>
                 </div>
@@ -64,82 +67,6 @@
                     <li>Bias and risk context for better decisions.</li>
                     <li>Clear actions for scheduling, curtailment, and reserves.</li>
                 </ul>
-            </div>
-            <div class="wl-hero-visual">
-                <div class="wl-chart-card wl-hero-visual-card" aria-label="Forecasting preview">
-                    <div class="wl-chart-header">
-                        <div>
-                            <p class="wl-chart-title">Forecast scenarios</p>
-                            <p class="wl-chart-caption">Illustrative view of uncertainty and drivers</p>
-                        </div>
-                        <span class="wl-chip">Illustrative</span>
-                    </div>
-                    <div class="wl-hero-animation" role="img" aria-label="Animated forecast ribbon with uncertainty, drivers, and risk band">
-                        <div class="wl-hero-viewport">
-                            <div class="wl-hero-world-track">
-                                <div class="wl-hero-world">
-                                    <svg viewBox="0 0 1800 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <defs>
-                                            <linearGradient id="wl-hero-band" x1="0" x2="0" y1="0" y2="1">
-                                                <stop offset="0%" stop-color="#2bd4c7" stop-opacity="0.45"/>
-                                                <stop offset="100%" stop-color="#2bd4c7" stop-opacity="0.08"/>
-                                            </linearGradient>
-                                            <linearGradient id="wl-hero-line" x1="0" x2="1" y1="0" y2="0">
-                                                <stop offset="0%" stop-color="#5bd6ff"/>
-                                                <stop offset="100%" stop-color="#1b6cff"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <path class="wl-hero-band" d="M0 220 C180 150, 320 260, 480 210 C640 160, 760 140, 920 190 C1080 230, 1200 210, 1360 180 C1520 150, 1640 200, 1800 170 L1800 240 C1640 270, 1520 290, 1360 250 C1200 220, 1080 240, 920 260 C760 280, 640 270, 480 300 C320 330, 180 300, 0 310 Z" fill="url(#wl-hero-band)"/>
-                                        <path class="wl-hero-line" d="M0 230 C180 170, 320 260, 480 220 C640 180, 760 160, 920 210 C1080 240, 1200 220, 1360 190 C1520 160, 1640 210, 1800 180" stroke="url(#wl-hero-line)" stroke-width="4" fill="none" stroke-linecap="round"/>
-                                        <g class="wl-hero-scenarios">
-                                            <path d="M0 260 C180 220, 320 290, 480 250 C640 210, 760 200, 920 240 C1080 270, 1200 250, 1360 220 C1520 190, 1640 240, 1800 210" />
-                                            <path d="M0 210 C180 140, 320 230, 480 190 C640 150, 760 130, 920 170 C1080 200, 1200 180, 1360 150 C1520 120, 1640 170, 1800 140" />
-                                        </g>
-                                        <g class="wl-hero-events">
-                                            <g class="wl-event wl-event-uncertainty" transform="translate(520 70)">
-                                                <rect width="140" height="32" rx="16" />
-                                                <text x="70" y="21" text-anchor="middle">UNCERTAINTY ↑</text>
-                                            </g>
-                                            <g class="wl-event wl-event-risk" transform="translate(980 180)">
-                                                <path d="M0 24 L12 0 L24 24 Z" />
-                                                <text x="40" y="18">RISK</text>
-                                            </g>
-                                            <g class="wl-event wl-event-driver" transform="translate(1320 110)">
-                                                <rect width="90" height="28" rx="14" />
-                                                <text x="45" y="18" text-anchor="middle">WAKE</text>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div class="wl-hero-world" aria-hidden="true">
-                                    <svg viewBox="0 0 1800 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path class="wl-hero-band" d="M0 220 C180 150, 320 260, 480 210 C640 160, 760 140, 920 190 C1080 230, 1200 210, 1360 180 C1520 150, 1640 200, 1800 170 L1800 240 C1640 270, 1520 290, 1360 250 C1200 220, 1080 240, 920 260 C760 280, 640 270, 480 300 C320 330, 180 300, 0 310 Z" fill="url(#wl-hero-band)"/>
-                                        <path class="wl-hero-line" d="M0 230 C180 170, 320 260, 480 220 C640 180, 760 160, 920 210 C1080 240, 1200 220, 1360 190 C1520 160, 1640 210, 1800 180" stroke="url(#wl-hero-line)" stroke-width="4" fill="none" stroke-linecap="round"/>
-                                        <g class="wl-hero-scenarios">
-                                            <path d="M0 260 C180 220, 320 290, 480 250 C640 210, 760 200, 920 240 C1080 270, 1200 250, 1360 220 C1520 190, 1640 240, 1800 210" />
-                                            <path d="M0 210 C180 140, 320 230, 480 190 C640 150, 760 130, 920 170 C1080 200, 1200 180, 1360 150 C1520 120, 1640 170, 1800 140" />
-                                        </g>
-                                        <g class="wl-hero-events">
-                                            <g class="wl-event wl-event-uncertainty" transform="translate(520 70)">
-                                                <rect width="140" height="32" rx="16" />
-                                                <text x="70" y="21" text-anchor="middle">UNCERTAINTY ↑</text>
-                                            </g>
-                                            <g class="wl-event wl-event-risk" transform="translate(980 180)">
-                                                <path d="M0 24 L12 0 L24 24 Z" />
-                                                <text x="40" y="18">RISK</text>
-                                            </g>
-                                            <g class="wl-event wl-event-driver" transform="translate(1320 110)">
-                                                <rect width="90" height="28" rx="14" />
-                                                <text x="45" y="18" text-anchor="middle">WAKE</text>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wl-risk-glow" aria-hidden="true"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -221,31 +148,55 @@
                     Forecasting is one input. WindLens turns it into clear decisions for operators and trading teams.
                 </p>
             </div>
-            <div class="wl-use-diagram" aria-label="Workflow and metrics summary">
-                <svg viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Workflow triangle">
-                    <defs>
-                        <linearGradient id="wl-circle-ring" x1="0" x2="1" y1="0" y2="1">
-                            <stop offset="0%" stop-color="#5bd6ff"/>
-                            <stop offset="100%" stop-color="#1b6cff"/>
-                        </linearGradient>
-                    </defs>
-                    <line x1="170" y1="120" x2="730" y2="120" />
-                    <line x1="170" y1="120" x2="450" y2="440" />
-                    <line x1="730" y1="120" x2="450" y2="440" />
-                    <circle cx="170" cy="120" r="90" />
-                    <circle cx="730" cy="120" r="90" />
-                    <circle cx="450" cy="440" r="90" />
-                    <circle cx="450" cy="280" r="70" class="wl-use-center" />
-                    <text x="170" y="110" text-anchor="middle">Forecasting</text>
-                    <text x="170" y="135" text-anchor="middle">Uncertainty bands</text>
-                    <text x="730" y="110" text-anchor="middle">Market context</text>
-                    <text x="730" y="135" text-anchor="middle">Bias & exposure</text>
-                    <text x="450" y="430" text-anchor="middle">Risk profile</text>
-                    <text x="450" y="455" text-anchor="middle">Action signals</text>
-                    <text x="450" y="270" text-anchor="middle">[Metric]</text>
-                    <text x="450" y="292" text-anchor="middle">Imbalance impact</text>
-                    <text x="450" y="314" text-anchor="middle">[Metric] Capacity</text>
-                </svg>
+            <div class="wl-flow-layout" aria-label="Forecast to market action flow">
+                <div class="wl-flow-steps">
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 12h3l2 4 4-8 3 6 2-3h4" />
+                            </svg>
+                        </span>
+                        <h3>Forecasting</h3>
+                        <p>Site-specific modelling with wake effects delivers a stronger short-term signal for scheduling and intraday planning.</p>
+                    </article>
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 3v18h18" />
+                                <path d="M7 14l4-4 4 3 4-5" />
+                            </svg>
+                        </span>
+                        <h3>Market context</h3>
+                        <p>Interpretable drivers reduce bias and improve trust in market signals for traders and schedulers.</p>
+                    </article>
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z" />
+                            </svg>
+                        </span>
+                        <h3>Risk profile</h3>
+                        <p>Always-on updates surface changing confidence, guiding hedging, curtailment, and reserve decisions.</p>
+                    </article>
+                </div>
+                <div class="wl-flow-connector" aria-hidden="true">
+                    <svg viewBox="0 0 800 80" preserveAspectRatio="none">
+                        <path d="M120 0 L120 32 L400 80" />
+                        <path d="M400 0 L400 36 L400 80" />
+                        <path d="M680 0 L680 32 L400 80" />
+                    </svg>
+                </div>
+                <aside class="wl-flow-outcome">
+                    <p class="wl-flow-eyebrow">Decision-ready outcome</p>
+                    <h3>Market action summary</h3>
+                    <p>Unified signal outputs translate forecast uncertainty into tactical decisions across trading and operations.</p>
+                    <ul class="wl-flow-axes">
+                        <li>Calibrated uncertainty for bids</li>
+                        <li>Ramp-risk flags for intraday</li>
+                        <li>Bias and exposure context</li>
+                        <li>Decision-ready signals</li>
+                    </ul>
+                </aside>
             </div>
         </div>
     </section>
@@ -276,16 +227,7 @@
                     <p>Optimise portfolio performance across assets and markets.</p>
                 </div>
             </div>
-            <div class="wl-neutral-logos">
-                <p class="wl-neutral-label">In conversation with</p>
-                <div class="wl-neutral-logo-row">
-                    <img src="./assets/Logo_Neoen.svg.png" alt="Neoen logo">
-                    <img src="./assets/Romande_Energie_Logo.svg.png" alt="Romande Energie logo">
-                    <img src="./assets/WET-withoutbkg.png" alt="WET logo">
-                    <img src="./assets/EOS_Holding_logo.svg.png" alt="EOS Holding logo">
-                    <img src="./assets/Alpiq.png" alt="Alpiq logo">
-                </div>
-            </div>
+            <p class="wl-credibility-line">Already collaborating with large renewable energy players.</p>
         </div>
     </section>
 
@@ -335,16 +277,7 @@
                 </form>
             </div>
         </div>
-    </section>
-
-    <!-- Supported By Section -->
-    <section class="wl-section" id="supported-by">
-        <div class="wl-container">
-            <div class="wl-supported-header">
-                <p class="wl-supported-label">Supported by</p>
-            </div>
-            <div class="wl-supported-logos" id="supported-by-logos" aria-label="Supported by"></div>
-        </div>
+        <div class="wl-section-sentinel" data-section-sentinel="contact" aria-hidden="true"></div>
     </section>
 
     <!-- Footer Section -->

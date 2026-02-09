@@ -1,7 +1,9 @@
+const header = document.getElementById("site-header");
 const menuButton = document.getElementById("menu-button");
-const navLinks = document.getElementById("nav-links");
+const navOverlay = document.getElementById("nav-overlay");
 const closeMenu = document.getElementById("close-menu");
-const navHeight = () => document.getElementById("site-header")?.getBoundingClientRect().height ?? 96;
+const navBackdrop = document.querySelector("[data-nav-close]");
+const navHeight = () => header?.getBoundingClientRect().height ?? 96;
 const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
 const NAV_ITEMS = [
@@ -26,18 +28,70 @@ renderNav(desktopNav, "wl-nav-link transition");
 renderNav(mobileNav, "wl-nav-link");
 
 const navItems = Array.from(document.querySelectorAll("[data-nav-target]"));
+let lastFocusedElement = null;
+let activeSectionId = NAV_ITEMS[0]?.id || "";
+
+const setActiveLink = (id) => {
+    if (!id) return;
+    activeSectionId = id;
+    navItems.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("data-nav-target") === id);
+    });
+};
+
+const getFocusableElements = (container) => {
+    if (!container) return [];
+    return Array.from(
+        container.querySelectorAll(
+            "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])"
+        )
+    );
+};
+
+const openMenu = () => {
+    if (!navOverlay) return;
+    navOverlay.classList.add("is-open");
+    navOverlay.setAttribute("aria-hidden", "false");
+    menuButton?.setAttribute("aria-expanded", "true");
+    lastFocusedElement = document.activeElement;
+    document.body.style.overflow = "hidden";
+    const focusables = getFocusableElements(navOverlay);
+    if (focusables.length) focusables[0].focus();
+};
 
 const closeMobileMenu = () => {
-    navLinks?.classList.remove("translate-x-0");
-    navLinks?.classList.add("-translate-x-full");
+    if (!navOverlay) return;
+    navOverlay.classList.remove("is-open");
+    navOverlay.setAttribute("aria-hidden", "true");
+    menuButton?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+    }
 };
 
 menuButton?.addEventListener("click", () => {
-    navLinks.classList.remove("-translate-x-full");
-    navLinks.classList.add("translate-x-0");
+    openMenu();
 });
 
 closeMenu?.addEventListener("click", closeMobileMenu);
+navBackdrop?.addEventListener("click", closeMobileMenu);
+
+const isMenuOpen = () => navOverlay?.classList.contains("is-open");
+const trapFocus = (event) => {
+    if (!isMenuOpen() || event.key !== "Tab") return;
+    const focusables = getFocusableElements(navOverlay);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+    }
+};
 
 const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -52,35 +106,68 @@ navItems.forEach((link) => {
         const targetId = link.getAttribute("data-nav-target");
         if (!targetId) return;
         event.preventDefault();
-        scrollToSection(targetId);
+        setActiveLink(targetId);
         closeMobileMenu();
+        setTimeout(() => scrollToSection(targetId), 10);
         if (isDev) {
             console.debug("[NAV] click", link.textContent?.trim(), "->", targetId);
         }
     });
 });
 
-const observerOptions = {
-    root: null,
-    rootMargin: `-${navHeight() + 20}px 0px -60% 0px`,
-    threshold: 0.1,
+let sectionObserver = null;
+const visibleSections = new Map();
+const setupObserver = () => {
+    if (sectionObserver) sectionObserver.disconnect();
+    const observerOptions = {
+        root: null,
+        rootMargin: "-25% 0px -65% 0px",
+        threshold: [0.2, 0.4, 0.6],
+    };
+    sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const id = entry.target.id;
+            if (!id) return;
+            if (entry.isIntersecting) {
+                visibleSections.set(id, entry.intersectionRatio);
+            } else {
+                visibleSections.delete(id);
+            }
+        });
+        let bestId = activeSectionId;
+        let bestRatio = 0;
+        visibleSections.forEach((ratio, id) => {
+            if (ratio > bestRatio) {
+                bestRatio = ratio;
+                bestId = id;
+            }
+        });
+        if (bestId) setActiveLink(bestId);
+    }, observerOptions);
 };
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        navItems.forEach((link) => {
-            link.classList.toggle("is-active", link.getAttribute("data-nav-target") === id);
-        });
-    });
-}, observerOptions);
-
 const sectionIds = NAV_ITEMS.map((item) => item.id);
+setupObserver();
 sectionIds.forEach((id) => {
     const section = document.getElementById(id);
     if (section) sectionObserver.observe(section);
 });
+
+window.addEventListener("resize", () => {
+    setupObserver();
+    sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) sectionObserver.observe(section);
+    });
+});
+
+const activateContactAtBottom = () => {
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
+    if (!nearBottom) return;
+    setActiveLink("contact");
+};
+
+window.addEventListener("scroll", activateContactAtBottom, { passive: true });
 
 const quoteSlides = Array.from(document.querySelectorAll(".wl-quote-slide"));
 const quotePrev = document.querySelector(".wl-quote-prev");
@@ -146,10 +233,13 @@ modalCloses.forEach((closeBtn) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    const activeModal = document.querySelector(".wl-modal.is-open");
-    if (activeModal) closeModal(activeModal);
-    if (lightbox?.classList.contains("is-open")) closeLightbox();
+    if (event.key === "Escape") {
+        if (isMenuOpen()) closeMobileMenu();
+        const activeModal = document.querySelector(".wl-modal.is-open");
+        if (activeModal) closeModal(activeModal);
+        if (lightbox?.classList.contains("is-open")) closeLightbox();
+    }
+    trapFocus(event);
 });
 
 const contactForm = document.getElementById("contact-form");
@@ -189,25 +279,3 @@ document.querySelectorAll(".wl-modal-grid img").forEach((img) => {
 lightboxCloses.forEach((btn) => {
     btn.addEventListener("click", closeLightbox);
 });
-
-// Verify logo usage rights & follow brand guidelines.
-const supportedByLogos = [
-    { name: "MIT", src: "./public/logos/mit.png", widthHint: 140 },
-    { name: "EPFL", src: "./public/logos/epfl.png", widthHint: 140 },
-    { name: "EPFL AI Center", src: "./public/logos/epfl-ai-center.png", widthHint: 180 },
-    { name: "Innosuisse", src: "./public/logos/innosuisse.png", widthHint: 150 },
-];
-
-const supportedByContainer = document.getElementById("supported-by-logos");
-if (supportedByContainer) {
-    supportedByContainer.innerHTML = supportedByLogos
-        .map(({ name, src, widthHint }) => {
-            const widthStyle = widthHint ? `style=\"--logo-width:${widthHint}px\"` : "";
-            return `
-                <div class=\"wl-supported-logo\" data-tooltip=\"${name}\" tabindex=\"0\" role=\"img\" aria-label=\"${name}\" ${widthStyle}>
-                    <img src=\"${src}\" alt=\"${name} logo\" loading=\"lazy\" decoding=\"async\" />
-                </div>
-            `;
-        })
-        .join("");
-}
