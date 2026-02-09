@@ -242,17 +242,6 @@ document.addEventListener("keydown", (event) => {
     trapFocus(event);
 });
 
-const contactForm = document.getElementById("contact-form");
-const contactSuccess = document.getElementById("contact-success");
-if (contactForm && contactSuccess) {
-    contactSuccess.style.display = "none";
-    contactForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        contactSuccess.style.display = "block";
-        contactForm.reset();
-    });
-}
-
 const openLightbox = (src, altText) => {
     if (!lightbox || !lightboxImage) return;
     lightboxImage.src = src;
