@@ -1800,7 +1800,7 @@ section[id] {
   margin-top: 28px;
   display: grid;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.86);
+  color: #173f73;
   font-size: 1rem;
   max-width: 560px;
   margin-left: auto;
@@ -1822,7 +1822,7 @@ section[id] {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #2bd4c7;
+  background: #1f5aa6;
 }
 
 /* legacy chart controls removed */
@@ -3577,6 +3577,10 @@ textarea:focus-visible {
   margin-bottom: 18px;
 }
 
+.wl-supported-block {
+  margin-top: 44px;
+}
+
 .wl-supported-label {
   font-size: 0.8rem;
   letter-spacing: 0.14em;
@@ -3611,10 +3615,26 @@ textarea:focus-visible {
 }
 
 .wl-supported-logo img {
-  height: 32px;
+  height: 42px;
   width: auto;
   max-width: var(--logo-width, 160px);
   object-fit: contain;
+}
+
+.wl-supported-logo-epfl-ai img {
+  height: 44px;
+}
+
+.wl-supported-logo-epfl img {
+  height: 52px;
+}
+
+.wl-supported-logo-mit img {
+  height: 56px;
+}
+
+.wl-supported-logo-innosuisse img {
+  height: 46px;
 }
 
 .wl-supported-logo:hover,
