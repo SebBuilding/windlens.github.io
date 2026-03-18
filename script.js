@@ -7,9 +7,9 @@ const navHeight = () => header?.getBoundingClientRect().height ?? 96;
 const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
 const NAV_ITEMS = [
-    { label: "Product", id: "product" },
+    { label: "The agent", id: "agent" },
     { label: "How it works", id: "how-it-works" },
-    { label: "Who it’s for", id: "who-its-for" },
+    { label: "Modules", id: "modules" },
     { label: "Contact", id: "contact" },
 ];
 

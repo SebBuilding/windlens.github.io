@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolutionising Wind Energy Forecasting</title>
-    <link rel="stylesheet" href="./output.css?v=20260208-01">
+    <title>WindLens - AI-Powered Decision Support for Wind Energy Trading</title>
+    <meta name="description" content="Site-specific wind power forecasts combined with an AI agent that monitors forecast uncertainty and market risk, alerts you when it matters, and recommends what to do.">
+    <link rel="stylesheet" href="./output.css?v=20260318-01">
     <link rel="shortcut icon" href="./assets/WindLens_short_logo.png" type="image/png">
 </head>
 
@@ -42,43 +43,169 @@
             <div id="nav-mobile" class="wl-nav-list"></div>
         </div>
     </div>
-    
+
     <!-- Hero Section -->
     <section class="wl-hero" id="top">
         <div class="wl-container wl-hero-grid">
             <div class="wl-hero-content">
-                <p class="wl-hero-kicker">Decision support for wind operators and market teams.</p>
+                <p class="wl-hero-kicker">AI-powered decision support for wind energy trading</p>
                 <h1 class="wl-hero-title">
-                    Unlock the true potential of your wind assets
+                    Know when risk hits. Know why. Know what to do.
                 </h1>
                 <p class="wl-hero-subtitle">
-                    Site-specific modelling for short-term wind energy market optimisation and decision support.
+                    WindLens combines site-specific wind power forecasts with an AI agent that monitors forecast uncertainty and market conditions &mdash; and alerts you with clear recommendations when it matters.
                 </p>
                 <div class="wl-hero-actions">
                     <a href="#contact" class="wl-btn-primary">
                         Book a demo
                     </a>
-                    <a href="#product" class="wl-btn-secondary">
-                        Explore product
+                    <a href="#how-it-works" class="wl-btn-secondary">
+                        See how it works
                     </a>
                 </div>
                 <ul class="wl-hero-outcomes">
-                    <li>Short-term signals aligned to trading windows.</li>
-                    <li>Bias and risk context for better decisions.</li>
-                    <li>Clear actions for scheduling, curtailment, and reserves.</li>
+                    <li>Alerts when forecast uncertainty spikes or market risk shifts</li>
+                    <li>Explains the drivers &mdash; which models diverge, what the market signals</li>
+                    <li>Recommends positions based on your risk tolerance</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Our Creations Section -->
+    <!-- Agent Experience Section -->
+    <section class="wl-section" id="agent">
+        <div class="wl-container">
+            <div class="wl-section-header">
+                <p class="wl-eyebrow">The agent experience</p>
+                <h2 class="wl-section-title">It watches the market for you</h2>
+                <p class="wl-section-subtitle">
+                    WindLens isn't a dashboard you stare at. It's an AI agent that continuously analyses incoming forecast and market data, identifies critical moments, and comes to you with context and a recommendation.
+                </p>
+            </div>
+
+            <!-- Simulated Alert -->
+            <div class="wl-alert-demo">
+                <div class="wl-alert-card">
+                    <div class="wl-alert-header">
+                        <span class="wl-alert-badge">High risk</span>
+                        <span class="wl-alert-time">Tomorrow 14:00&ndash;18:00 CET</span>
+                    </div>
+                    <h3 class="wl-alert-title">Ramp risk detected &mdash; Offshore Wind Park North Sea</h3>
+                    <div class="wl-alert-body">
+                        <div class="wl-alert-section">
+                            <p class="wl-alert-label">What's happening</p>
+                            <p class="wl-alert-text">GFS and ECMWF diverge by 8 m/s on wind speed for 14:00&ndash;18:00. Power forecast spread: 42&ndash;78 MW (your schedule: 65 MW). Historical pattern: similar divergences led to &gt;30% forecast error in 73% of cases.</p>
+                        </div>
+                        <div class="wl-alert-section">
+                            <p class="wl-alert-label">Market context</p>
+                            <p class="wl-alert-text">Imbalance prices elevated at &euro;120/MWh (vs. &euro;45 average). Intraday liquidity thinning for delivery hours 14&ndash;18. Short position risk is high.</p>
+                        </div>
+                        <div class="wl-alert-section wl-alert-recommendation">
+                            <p class="wl-alert-label">Recommendation</p>
+                            <p class="wl-alert-text">Reduce day-ahead position by 15 MW for hours 14&ndash;18 and hedge remaining volume in intraday before 10:00 gate closure. Expected penalty reduction: &euro;4,200.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="wl-alert-caption">Example alert from WindLens &mdash; delivered when risk conditions warrant action, not on a schedule.</p>
+            </div>
+
+            <!-- How it feels -->
+            <div class="wl-agent-steps">
+                <div class="wl-agent-step">
+                    <span class="wl-agent-step-num">1</span>
+                    <h3>You connect your data</h3>
+                    <p>Share your site layout, historical production, and market position. WindLens learns the specifics of your assets.</p>
+                </div>
+                <div class="wl-agent-step">
+                    <span class="wl-agent-step-num">2</span>
+                    <h3>The agent monitors continuously</h3>
+                    <p>WindLens ingests live weather models, runs site-specific flow simulations, and tracks market signals around the clock.</p>
+                </div>
+                <div class="wl-agent-step">
+                    <span class="wl-agent-step-num">3</span>
+                    <h3>You get alerts when it matters</h3>
+                    <p>When forecast uncertainty spikes, when imbalance prices are about to move, when ramp risk is high &mdash; WindLens tells you why and what to do.</p>
+                </div>
+                <div class="wl-agent-step">
+                    <span class="wl-agent-step-num">4</span>
+                    <h3>You act with confidence</h3>
+                    <p>Follow the recommendation, adjust it based on your judgement, or dig into the full analysis. You stay in control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="wl-section" id="how-it-works">
+        <div class="wl-container">
+            <div class="wl-section-header">
+                <p class="wl-eyebrow">Under the hood</p>
+                <h2 class="wl-section-title">From forecast to market action</h2>
+                <p class="wl-section-subtitle">
+                    WindLens builds on two layers: a forecasting engine that captures your site's specific physics, and an AI agent that turns those forecasts into actionable trading intelligence.
+                </p>
+            </div>
+            <div class="wl-flow-layout" aria-label="Forecast to market action flow">
+                <div class="wl-flow-steps">
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 12h3l2 4 4-8 3 6 2-3h4" />
+                            </svg>
+                        </span>
+                        <h3>Site-specific forecasting</h3>
+                        <p>Numerical weather models combined with wind-farm flow simulations and ML calibration. Captures wake effects, terrain influence, and local patterns. Runs continuously with fast reforecasting as new data arrives.</p>
+                    </article>
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 3v18h18" />
+                                <path d="M7 14l4-4 4 3 4-5" />
+                            </svg>
+                        </span>
+                        <h3>Market risk monitoring</h3>
+                        <p>Tracks imbalance prices, intraday market dynamics, and settlement patterns. Identifies when price risk is elevated and explains the drivers &mdash; not just that something changed, but why.</p>
+                    </article>
+                    <article class="wl-flow-card">
+                        <span class="wl-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z" />
+                            </svg>
+                        </span>
+                        <h3>Risk alerts with context</h3>
+                        <p>When forecast uncertainty or market conditions cross critical thresholds, WindLens alerts you. Each alert explains the drivers &mdash; which weather model diverges, what historical patterns suggest &mdash; and recommends a position.</p>
+                    </article>
+                </div>
+                <div class="wl-flow-connector" aria-hidden="true">
+                    <svg viewBox="0 0 800 80" preserveAspectRatio="none">
+                        <path d="M120 0 L120 32 L400 80" />
+                        <path d="M400 0 L400 36 L400 80" />
+                        <path d="M680 0 L680 32 L400 80" />
+                    </svg>
+                </div>
+                <aside class="wl-flow-outcome">
+                    <p class="wl-flow-eyebrow">Decision-ready outcome</p>
+                    <h3>AI-guided market action</h3>
+                    <p>The agent synthesises forecast uncertainty, market conditions, and your risk tolerance into a clear recommendation: how much to sell, when, and at what risk.</p>
+                    <ul class="wl-flow-axes">
+                        <li>Position recommendations tuned to your risk profile</li>
+                        <li>Ramp-risk and imbalance exposure flags</li>
+                        <li>Quantified penalty reduction estimates</li>
+                        <li>Actionable before gate closure</li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
     <section class="wl-section" id="product">
         <div class="wl-container">
             <div class="wl-section-header">
                 <p class="wl-eyebrow">Product</p>
                 <h2 class="wl-section-title">Decision support suite</h2>
                 <p class="wl-section-subtitle">
-                    Site-specific forecasts linked to market context and probabilistic risk profiles for clear actions per asset.
+                    Site-specific forecasts linked to market context and probabilistic risk profiles &mdash; delivered as alerts, not dashboards.
                 </p>
             </div>
             <div class="wl-feature-grid">
@@ -93,15 +220,15 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="wl-feature-title">Forecasting</h3>
-                            <p class="wl-feature-text">Site-specific modelling with wake effects delivers a stronger short-term signal for scheduling and intraday planning.</p>
+                            <h3 class="wl-feature-title">Forecasting engine</h3>
+                            <p class="wl-feature-text">Site-specific wind power forecasts that capture wake effects, terrain, and local conditions. Continuously updated with fast reforecasting as new weather model runs arrive.</p>
                         </div>
                         <button class="wl-feature-cta" type="button" data-modal="feature-forecast">Learn more</button>
                     </div>
                 </article>
                 <article class="wl-feature-card">
                     <div class="wl-feature-media">
-                        <img class="wl-feature-image" alt="Market level understanding" src="./assets/Second_image.png" />
+                        <img class="wl-feature-image" alt="Market risk monitoring" src="./assets/Second_image.png" />
                     </div>
                     <div class="wl-feature-body">
                         <div class="wl-feature-icon">
@@ -111,15 +238,15 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="wl-feature-title">Market understanding</h3>
-                            <p class="wl-feature-text">Interpretable drivers reduce bias and improve trust in market signals for traders and schedulers.</p>
+                            <h3 class="wl-feature-title">Market risk intelligence</h3>
+                            <p class="wl-feature-text">Monitors imbalance prices, intraday volatility, and settlement dynamics. Surfaces the drivers behind price movements so you understand what's happening and why.</p>
                         </div>
                         <button class="wl-feature-cta" type="button" data-modal="feature-market">Learn more</button>
                     </div>
                 </article>
                 <article class="wl-feature-card">
                     <div class="wl-feature-media">
-                        <img class="wl-feature-image" alt="Recommendations based on risk profile" src="./assets/Third_image.png" />
+                        <img class="wl-feature-image" alt="AI agent alerts and recommendations" src="./assets/Third_image.png" />
                     </div>
                     <div class="wl-feature-body">
                         <div class="wl-feature-icon">
@@ -128,8 +255,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="wl-feature-title">Risk profile</h3>
-                            <p class="wl-feature-text">Always-on updates surface changing confidence, guiding hedging, curtailment, and reserve decisions.</p>
+                            <h3 class="wl-feature-title">AI agent &amp; alerts</h3>
+                            <p class="wl-feature-text">When forecast uncertainty spikes or market risk shifts, the agent alerts you with the full picture: what changed, why it matters, and what position to take given your risk tolerance.</p>
                         </div>
                         <button class="wl-feature-cta" type="button" data-modal="feature-risk">Learn more</button>
                     </div>
@@ -138,96 +265,103 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="wl-section" id="how-it-works">
+    <!-- Modules / Pricing Section -->
+    <section class="wl-section" id="modules">
         <div class="wl-container">
             <div class="wl-section-header">
-                <p class="wl-eyebrow">How you use WindLens</p>
-                <h2 class="wl-section-title">From forecast to market action</h2>
+                <p class="wl-eyebrow">Modules</p>
+                <h2 class="wl-section-title">Choose what fits your risk exposure</h2>
                 <p class="wl-section-subtitle">
-                    Forecasting is one input. WindLens turns it into clear decisions for operators and trading teams.
+                    WindLens is modular. Pick the intelligence layer that matches the risk you carry.
                 </p>
             </div>
-            <div class="wl-flow-layout" aria-label="Forecast to market action flow">
-                <div class="wl-flow-steps">
-                    <article class="wl-flow-card">
-                        <span class="wl-flow-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 12h3l2 4 4-8 3 6 2-3h4" />
-                            </svg>
-                        </span>
-                        <h3>Forecasting</h3>
-                        <p>Site-specific modelling with wake effects delivers a stronger short-term signal for scheduling and intraday planning.</p>
-                    </article>
-                    <article class="wl-flow-card">
-                        <span class="wl-flow-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 3v18h18" />
-                                <path d="M7 14l4-4 4 3 4-5" />
-                            </svg>
-                        </span>
-                        <h3>Market context</h3>
-                        <p>Interpretable drivers reduce bias and improve trust in market signals for traders and schedulers.</p>
-                    </article>
-                    <article class="wl-flow-card">
-                        <span class="wl-flow-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z" />
-                            </svg>
-                        </span>
-                        <h3>Risk profile</h3>
-                        <p>Always-on updates surface changing confidence, guiding hedging, curtailment, and reserve decisions.</p>
-                    </article>
-                </div>
-                <div class="wl-flow-connector" aria-hidden="true">
-                    <svg viewBox="0 0 800 80" preserveAspectRatio="none">
-                        <path d="M120 0 L120 32 L400 80" />
-                        <path d="M400 0 L400 36 L400 80" />
-                        <path d="M680 0 L680 32 L400 80" />
-                    </svg>
-                </div>
-                <aside class="wl-flow-outcome">
-                    <p class="wl-flow-eyebrow">Decision-ready outcome</p>
-                    <h3>Market action summary</h3>
-                    <p>Unified signal outputs translate forecast uncertainty into tactical decisions across trading and operations.</p>
-                    <ul class="wl-flow-axes">
-                        <li>Calibrated uncertainty for bids</li>
-                        <li>Ramp-risk flags for intraday</li>
-                        <li>Bias and exposure context</li>
-                        <li>Decision-ready signals</li>
+            <div class="wl-modules-grid">
+                <div class="wl-module-card">
+                    <div class="wl-module-header">
+                        <h3>Volume module</h3>
+                        <p class="wl-module-price">&euro;100<span>/MW/yr</span></p>
+                    </div>
+                    <p class="wl-module-for">For customers bearing <strong>volume risk</strong></p>
+                    <ul class="wl-module-features">
+                        <li>Alerts on portfolio-specific high-volume-risk events</li>
+                        <li>Analyses extensive historical data for your specific sites</li>
+                        <li>Interpretable, probabilistic position recommendations</li>
+                        <li>Ramp risk detection and quantified exposure estimates</li>
                     </ul>
-                </aside>
+                    <a href="#contact" class="wl-btn-primary wl-module-cta">Get started</a>
+                </div>
+                <div class="wl-module-card wl-module-card-highlight">
+                    <div class="wl-module-header">
+                        <h3>Market module</h3>
+                        <p class="wl-module-price">&euro;6,000<span>/license/yr</span></p>
+                    </div>
+                    <p class="wl-module-for">For customers bearing <strong>price risk</strong></p>
+                    <ul class="wl-module-features">
+                        <li>Alerts on potential imbalance and intraday price spikes</li>
+                        <li>Analyses patterns to surface relevant market signals</li>
+                        <li>Explains drivers behind price movements</li>
+                        <li>Settlement dynamics and liquidity monitoring</li>
+                    </ul>
+                    <a href="#contact" class="wl-btn-primary wl-module-cta">Get started</a>
+                </div>
+                <div class="wl-module-card">
+                    <div class="wl-module-header">
+                        <h3>Combined module</h3>
+                        <p class="wl-module-price">Custom<span> pricing</span></p>
+                    </div>
+                    <p class="wl-module-for">For customers who want <strong>the full picture</strong></p>
+                    <ul class="wl-module-features">
+                        <li>Integrates volume and market risk into unified alerts</li>
+                        <li>Total portfolio risk scoring across forecast and price</li>
+                        <li>Position recommendations that weigh both sides</li>
+                        <li>Tailored to your specific assets and market exposure</li>
+                    </ul>
+                    <a href="#contact" class="wl-btn-primary wl-module-cta">Talk to us</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Outcomes Section -->
     <!-- Who It's For Section -->
     <section class="wl-section" id="who-its-for">
         <div class="wl-container">
             <div class="wl-section-header">
-                <p class="wl-eyebrow">Who it’s for</p>
+                <p class="wl-eyebrow">Who it's for</p>
                 <h2 class="wl-section-title">Built for the teams who act on forecasts</h2>
-                <p class="wl-section-subtitle">Operators, traders, and IPPs who need clear, decision-ready signals.</p>
+                <p class="wl-section-subtitle">Operators, traders, and IPPs who need to know when risk is coming and what to do about it.</p>
             </div>
             <div class="wl-audience-grid">
                 <div class="wl-audience-card">
-                    <span class="wl-audience-icon">⚙</span>
+                    <span class="wl-audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </span>
                     <h3>Operators</h3>
-                    <p>Plan dispatch, curtailment, and maintenance with confidence.</p>
+                    <p>Plan dispatch, curtailment, and maintenance with confidence. Get alerted before ramp events and forecast uncertainty spikes hit your schedule.</p>
                 </div>
                 <div class="wl-audience-card">
-                    <span class="wl-audience-icon">↗</span>
-                    <h3>Traders & schedulers</h3>
-                    <p>Align day-ahead and intraday positions with risk context.</p>
+                    <span class="wl-audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </span>
+                    <h3>Traders &amp; schedulers</h3>
+                    <p>Align day-ahead and intraday positions with real-time risk context. Know when imbalance exposure is rising and what's driving it before gate closure.</p>
                 </div>
                 <div class="wl-audience-card">
-                    <span class="wl-audience-icon">◯</span>
+                    <span class="wl-audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </span>
                     <h3>IPPs</h3>
-                    <p>Optimise portfolio performance across assets and markets.</p>
+                    <p>Optimise portfolio performance across assets and markets. Get a unified risk view that spans multiple sites and trading positions.</p>
                 </div>
             </div>
-            <p class="wl-credibility-line">Collaborating with large renewable energy players under NDA</p>
+
+            <!-- Credibility -->
+            <div class="wl-credibility-block">
+                <p class="wl-credibility-line">Founded by researchers from EPFL and MIT. Active pilots with major operators and traders.</p>
+                <p class="wl-credibility-line">
+                    <a href="https://arxiv.org/abs/2512.03606" target="_blank" rel="noopener noreferrer" class="wl-credibility-link">Published research &rarr;</a>
+                </p>
+            </div>
+
             <div class="wl-supported-block" aria-label="Supported by organizations">
                 <div class="wl-supported-header">
                     <p class="wl-supported-label">Supported by</p>
@@ -258,14 +392,14 @@
                     <p class="wl-eyebrow">Get in touch</p>
                     <h2 class="wl-section-title">Book a demo or ask a question</h2>
                     <p class="wl-section-subtitle">
-                        Share your assets and market exposure. We’ll show how WindLens supports day-ahead and intraday actions.
+                        Tell us about your assets, your market exposure, and the risks you manage. We'll show you how WindLens handles them.
                     </p>
                     <div class="wl-contact-actions">
                         <a href="#contact-form" class="wl-btn-primary">Book a demo</a>
-                        <a href="mailto:mat.peduto@gmail.com" class="wl-btn-secondary-dark">Email us</a>
+                        <a href="mailto:matteo.peduto@epfl.ch" class="wl-btn-secondary-dark">Email us</a>
                     </div>
                 </div>
-                <form class="wl-form wl-form-compact" id="contact-form" action="mailto:mat.peduto@gmail.com" method="post" enctype="text/plain">
+                <form class="wl-form wl-form-compact" id="contact-form" action="mailto:matteo.peduto@epfl.ch" method="post" enctype="text/plain">
                     <div>
                         <label class="wl-label">
                             Your name
@@ -280,7 +414,7 @@
                     </div>
                     <div class="sm:col-span-2">
                         <label class="wl-label">Message</label>
-                        <textarea name="message" rows="5" placeholder="Tell us about your assets and goals" class="wl-textarea" required></textarea>
+                        <textarea name="message" rows="5" placeholder="Tell us about your assets and the risks you manage" class="wl-textarea" required></textarea>
                     </div>
                     <div class="wl-form-actions">
                         <button type="submit" class="wl-btn-primary wl-btn-submit">
@@ -290,7 +424,7 @@
                                 <path d="M7 17 17 7"></path>
                             </svg>
                         </button>
-                        <p class="wl-form-success" id="contact-success" role="status" aria-live="polite">Thanks — we’ll be in touch shortly.</p>
+                        <p class="wl-form-success" id="contact-success" role="status" aria-live="polite">Thanks — we'll be in touch shortly.</p>
                     </div>
                 </form>
             </div>
@@ -308,8 +442,9 @@
             </div>
             <div class="wl-footer-links">
                 <h2 class="wl-footer-title">Company</h2>
-                <p class="wl-footer-link">Decision support for wind operators and power-market teams.</p>
+                <p class="wl-footer-link">AI-powered decision support for wind energy trading.</p>
                 <a class="wl-footer-link" href="#how-it-works">How it works</a>
+                <a class="wl-footer-link" href="#modules">Modules</a>
                 <a class="wl-footer-link" href="#contact">Contact us</a>
             </div>
         </div>
@@ -328,13 +463,14 @@
             <div class="wl-modal-grid">
                 <img src="./assets/First_image.png" alt="Site specific forecasts" />
                 <div>
-                    <p class="wl-modal-eyebrow">Visualisations</p>
-                    <h3 id="feature-forecast-title">Forecasting</h3>
-                    <p class="wl-modal-text">See the forecast line, confidence bands, and observed baseline aligned to scheduling windows.</p>
+                    <p class="wl-modal-eyebrow">Forecasting engine</p>
+                    <h3 id="feature-forecast-title">Site-specific forecasting</h3>
+                    <p class="wl-modal-text">Numerical weather models combined with computational fluid dynamics simulations and machine learning calibration, tuned to the specific characteristics of each wind farm.</p>
                     <ul class="wl-modal-list">
-                        <li>Site-specific signal with wake effects</li>
-                        <li>Confidence ranges by lead time</li>
-                        <li>Observed vs forecast comparison</li>
+                        <li>Wake effects and terrain influence modelled per site</li>
+                        <li>Confidence ranges calibrated by lead time</li>
+                        <li>Fast reforecasting as new NWP runs arrive</li>
+                        <li>Observed vs. forecast comparison for continuous learning</li>
                     </ul>
                 </div>
             </div>
@@ -351,15 +487,16 @@
                 </svg>
             </button>
             <div class="wl-modal-grid">
-                <img src="./assets/Second_image.png" alt="Market level understanding" />
+                <img src="./assets/Second_image.png" alt="Market risk monitoring" />
                 <div>
-                    <p class="wl-modal-eyebrow">Visualisations</p>
-                    <h3 id="feature-market-title">Market understanding</h3>
-                    <p class="wl-modal-text">Interpretable drivers explain why the forecast shifted and how market exposure is changing.</p>
+                    <p class="wl-modal-eyebrow">Market intelligence</p>
+                    <h3 id="feature-market-title">Market risk monitoring</h3>
+                    <p class="wl-modal-text">Continuous analysis of imbalance settlement, intraday market dynamics, and price risk signals &mdash; with interpretable explanations of what's driving changes.</p>
                     <ul class="wl-modal-list">
-                        <li>Top drivers and impact markers</li>
-                        <li>Bias and drift indicators</li>
-                        <li>Decision context for traders</li>
+                        <li>Imbalance price tracking and spike detection</li>
+                        <li>Intraday volatility and liquidity signals</li>
+                        <li>Driver attribution: why prices are moving</li>
+                        <li>Historical pattern matching for risk assessment</li>
                     </ul>
                 </div>
             </div>
@@ -376,15 +513,16 @@
                 </svg>
             </button>
             <div class="wl-modal-grid">
-                <img src="./assets/Third_image.png" alt="Recommendations based on risk profile" />
+                <img src="./assets/Third_image.png" alt="AI agent alerts and recommendations" />
                 <div>
-                    <p class="wl-modal-eyebrow">Visualisations</p>
-                    <h3 id="feature-risk-title">Risk profile</h3>
-                    <p class="wl-modal-text">Track confidence shifts and risk posture changes for hedging, curtailment, and reserve planning.</p>
+                    <p class="wl-modal-eyebrow">AI agent</p>
+                    <h3 id="feature-risk-title">Alerts &amp; recommendations</h3>
+                    <p class="wl-modal-text">The AI agent continuously monitors both forecast uncertainty and market conditions. When risk thresholds are crossed, it delivers targeted alerts with full context and actionable recommendations.</p>
                     <ul class="wl-modal-list">
-                        <li>Risk bands and alerts</li>
-                        <li>Rapid refresh monitoring</li>
-                        <li>Action guidance by profile</li>
+                        <li>Triggered by risk conditions, not on a fixed schedule</li>
+                        <li>Explains drivers: model divergence, market shifts, historical patterns</li>
+                        <li>Position recommendations tuned to your risk tolerance</li>
+                        <li>Quantified impact: expected penalty reduction per alert</li>
                     </ul>
                 </div>
             </div>
