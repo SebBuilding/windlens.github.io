@@ -741,6 +741,10 @@ textarea:focus-visible {
     height: 46px;
 }
 
+.wl-supported-logo-partner img {
+    height: 44px;
+}
+
 .wl-supported-logo:hover,
 .wl-supported-logo:focus-visible {
     filter: none;
@@ -1370,7 +1374,115 @@ section[id] {
     line-height: 1.6;
 }
 
-/* Modules / Pricing */
+/* Product Layers */
+.wl-product-layers {
+    display: grid;
+    gap: 32px;
+}
+
+.wl-product-layer {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 28px;
+    align-items: center;
+    padding: 28px;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 51, 0.08);
+    box-shadow: 0 16px 40px rgba(13, 35, 66, 0.08);
+}
+
+.wl-product-layer-reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.wl-product-layer-reverse .wl-product-layer-media {
+    order: 2;
+}
+
+.wl-product-layer-reverse .wl-product-layer-body {
+    order: 1;
+}
+
+.wl-product-layer-agent {
+    grid-template-columns: 1fr;
+    background: linear-gradient(145deg, rgba(11, 31, 51, 0.96), rgba(15, 48, 86, 0.92));
+    color: #fff;
+}
+
+.wl-product-layer-agent h3 {
+    color: #fff;
+}
+
+.wl-product-layer-agent p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.wl-product-layer-agent .wl-product-layer-highlight {
+    color: rgba(255, 255, 255, 0.7);
+    border-left-color: rgba(91, 214, 255, 0.6);
+}
+
+.wl-product-layer-agent .wl-product-layer-num {
+    background: rgba(91, 214, 255, 0.2);
+    color: #5bd6ff;
+    border-color: rgba(91, 214, 255, 0.3);
+}
+
+.wl-product-layer-media {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 240px;
+}
+
+.wl-product-layer-media .wl-feature-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wl-product-layer-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wl-product-layer-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(21, 88, 214, 0.1);
+    border: 1px solid rgba(21, 88, 214, 0.2);
+    color: var(--wl-primary);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.wl-product-layer-body h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--wl-ink);
+}
+
+.wl-product-layer-body p {
+    color: var(--wl-ink-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.wl-product-layer-highlight {
+    font-size: 0.9rem;
+    color: var(--wl-ink-muted);
+    font-style: italic;
+    border-left: 3px solid var(--wl-teal);
+    padding-left: 14px;
+}
+
+/* Modules */
 .wl-modules-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1393,28 +1505,6 @@ section[id] {
     box-shadow: 0 22px 50px rgba(13, 35, 66, 0.14);
 }
 
-.wl-module-card-highlight {
-    border: 2px solid var(--wl-primary);
-    position: relative;
-}
-
-.wl-module-card-highlight::before {
-    content: "Most popular";
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--wl-primary);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 999px;
-    white-space: nowrap;
-}
-
 .wl-module-header {
     margin-bottom: 14px;
 }
@@ -1423,20 +1513,6 @@ section[id] {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--wl-ink);
-}
-
-.wl-module-price {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--wl-primary);
-    margin-top: 6px;
-}
-
-.wl-module-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--wl-ink-muted);
 }
 
 .wl-module-for {
@@ -1579,6 +1655,22 @@ section[id] {
     .wl-flow-card::after,
     .wl-flow-card::before {
         display: none;
+    }
+
+    .wl-product-layer {
+        grid-template-columns: 1fr;
+    }
+
+    .wl-product-layer-reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .wl-product-layer-reverse .wl-product-layer-media {
+        order: 0;
+    }
+
+    .wl-product-layer-reverse .wl-product-layer-body {
+        order: 0;
     }
 
     .wl-agent-steps {
