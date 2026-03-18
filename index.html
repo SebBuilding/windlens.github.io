@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WindLens - Trading Intelligence for Wind Energy</title>
     <meta name="description" content="Site-specific forecasts, real market intelligence, risk analysis, and an AI agent that does the heavy lifting — everything wind energy traders and operators need to make better decisions.">
-    <link rel="stylesheet" href="./output.css?v=20260318-02">
+    <link rel="stylesheet" href="./output.css?v=20260318-05">
     <link rel="shortcut icon" href="./assets/WindLens_short_logo.png" type="image/png">
 </head>
 
@@ -72,7 +72,224 @@
         </div>
     </section>
 
-    <!-- How It Works / The Experience Section -->
+    <!-- Product Architecture Section -->
+    <section class="wl-section" id="product">
+        <div class="wl-container">
+            <div class="wl-section-header">
+                <p class="wl-eyebrow">Product</p>
+                <h2 class="wl-section-title">Three intelligence layers, one AI agent</h2>
+                <p class="wl-section-subtitle">
+                    Site-specific forecasting, real market intelligence, and probabilistic risk analysis &mdash; processed together by an AI agent that tells you what to do.
+                </p>
+            </div>
+
+            <!-- 3-column architecture -->
+            <div class="wl-arch-columns" id="arch-columns">
+                <!-- Forecasting column -->
+                <div class="wl-arch-col">
+                    <div class="wl-arch-visual">
+                        <svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Forecast chart: GFS, ECMWF, and WindLens corrected forecast with confidence bands over 48h">
+                            <!-- Horizontal grid lines -->
+                            <line x1="38" y1="20" x2="285" y2="20" stroke="rgba(11,31,51,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+                            <line x1="38" y1="51" x2="285" y2="51" stroke="rgba(11,31,51,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+                            <line x1="38" y1="82" x2="285" y2="82" stroke="rgba(11,31,51,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+                            <line x1="38" y1="114" x2="285" y2="114" stroke="rgba(11,31,51,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+                            <!-- Axes -->
+                            <line x1="38" y1="20" x2="38" y2="145" stroke="rgba(11,31,51,0.1)" stroke-width="0.75"/>
+                            <line x1="38" y1="145" x2="285" y2="145" stroke="rgba(11,31,51,0.1)" stroke-width="0.75"/>
+                            <!-- X-axis tick marks -->
+                            <line x1="100" y1="145" x2="100" y2="148" stroke="rgba(11,31,51,0.1)" stroke-width="0.5"/>
+                            <line x1="162" y1="145" x2="162" y2="148" stroke="rgba(11,31,51,0.1)" stroke-width="0.5"/>
+                            <line x1="224" y1="145" x2="224" y2="148" stroke="rgba(11,31,51,0.1)" stroke-width="0.5"/>
+                            <!-- Y-axis labels -->
+                            <text x="6" y="24" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif">100</text>
+                            <text x="14" y="55" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif">75</text>
+                            <text x="14" y="86" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif">50</text>
+                            <text x="14" y="118" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif">25</text>
+                            <text x="22" y="149" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif">0</text>
+                            <!-- Y-axis title -->
+                            <text fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif" text-anchor="middle" transform="translate(10,82) rotate(-90)">Power (MW)</text>
+                            <!-- X-axis labels -->
+                            <text x="38" y="158" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">0h</text>
+                            <text x="100" y="158" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">12h</text>
+                            <text x="162" y="158" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">24h</text>
+                            <text x="224" y="158" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">36h</text>
+                            <text x="285" y="158" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">48h</text>
+                            <!-- Confidence band (widens with horizon) -->
+                            <path d="M38 76 C60 72,80 64,100 60 C130 50,145 44,162 42 C180 38,200 39,224 46 C245 52,265 56,285 60 L285 78 C265 74,245 72,224 68 C200 61,180 58,162 58 C145 60,130 64,100 72 C80 78,60 80,38 82 Z" fill="rgba(21,88,214,0.08)"/>
+                            <!-- GFS line (overshoots — no wake correction) -->
+                            <path d="M38 77 C55 72,75 58,100 48 C130 35,150 28,162 26 C180 22,200 30,224 44 C245 55,265 62,285 65" stroke="#2bd4c7" stroke-width="1.3" stroke-dasharray="6 3" stroke-linecap="round" fill="none"/>
+                            <!-- ECMWF line (more conservative) -->
+                            <path d="M38 77 C55 76,75 72,100 68 C130 60,150 56,162 54 C180 50,200 54,224 60 C245 66,265 72,285 76" stroke="#7c9cc4" stroke-width="1.3" stroke-dasharray="4 3" stroke-linecap="round" fill="none"/>
+                            <!-- WindLens corrected line -->
+                            <path d="M38 77 C55 74,75 66,100 60 C130 48,150 42,162 40 C180 38,200 42,224 50 C245 57,265 62,285 66" stroke="#1558d6" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                            <!-- Wake correction annotation -->
+                            <line x1="145" y1="28" x2="145" y2="42" stroke="rgba(21,88,214,0.35)" stroke-width="0.7" stroke-dasharray="2 2"/>
+                            <rect x="113" y="18" width="64" height="13" rx="3" fill="rgba(21,88,214,0.1)" stroke="rgba(21,88,214,0.2)" stroke-width="0.5"/>
+                            <text x="145" y="27" fill="#1558d6" font-size="7" font-family="Source Sans 3, sans-serif" font-weight="600" text-anchor="middle">Wake correction</text>
+                            <!-- Legend -->
+                            <line x1="55" y1="172" x2="69" y2="172" stroke="#1558d6" stroke-width="2"/>
+                            <text x="73" y="175" fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif">WindLens</text>
+                            <line x1="117" y1="172" x2="131" y2="172" stroke="#2bd4c7" stroke-width="1.3" stroke-dasharray="6 3"/>
+                            <text x="135" y="175" fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif">GFS</text>
+                            <line x1="158" y1="172" x2="172" y2="172" stroke="#7c9cc4" stroke-width="1.3" stroke-dasharray="4 3"/>
+                            <text x="176" y="175" fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif">ECMWF</text>
+                        </svg>
+                    </div>
+                    <h3>Site-specific forecasting</h3>
+                    <p>Learns local patterns from terrain, wake effects, and historical data using machine learning on top of global weather models. Forecasts you can read and understand at any level.</p>
+                </div>
+
+                <!-- Market intelligence column -->
+                <div class="wl-arch-col">
+                    <div class="wl-arch-visual wl-arch-visual-feed">
+                        <svg viewBox="0 0 280 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Market intelligence feed with REMIT, imbalance, grid, and demand events">
+                            <!-- REMIT alert row -->
+                            <rect x="8" y="6" width="264" height="42" rx="8" fill="rgba(196,60,46,0.06)" stroke="rgba(196,60,46,0.15)" stroke-width="0.75"/>
+                            <circle cx="22" cy="27" r="4.5" fill="#c43c2e"/>
+                            <circle cx="22" cy="27" r="4.5" fill="#c43c2e" opacity="0.4">
+                                <animate attributeName="r" values="4.5;7;4.5" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="34" y="20" fill="#c43c2e" font-size="7.5" font-weight="700" font-family="Source Sans 3, sans-serif" letter-spacing="0.05em">REMIT</text>
+                            <text x="34" y="34" fill="#0b1f33" font-size="9" font-family="Source Sans 3, sans-serif">400 MW gas plant offline &mdash; DE</text>
+                            <text x="230" y="20" fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif">14:00 CET</text>
+                            <rect x="228" y="28" width="34" height="12" rx="6" fill="rgba(196,60,46,0.1)"/>
+                            <text x="245" y="37" fill="#c43c2e" font-size="7" font-weight="600" font-family="Source Sans 3, sans-serif" text-anchor="middle">ALERT</text>
+                            <!-- Imbalance price row -->
+                            <rect x="8" y="54" width="264" height="42" rx="8" fill="rgba(234,179,8,0.06)" stroke="rgba(234,179,8,0.18)" stroke-width="0.75"/>
+                            <circle cx="22" cy="75" r="4.5" fill="#d97706"/>
+                            <text x="34" y="68" fill="#d97706" font-size="7.5" font-weight="700" font-family="Source Sans 3, sans-serif" letter-spacing="0.05em">IMBALANCE</text>
+                            <text x="34" y="82" fill="#0b1f33" font-size="9" font-family="Source Sans 3, sans-serif">&euro;120/MWh (avg &euro;45)</text>
+                            <text x="230" y="78" fill="#c43c2e" font-size="11" font-weight="700" font-family="Source Sans 3, sans-serif">+167%</text>
+                            <!-- Grid event row -->
+                            <rect x="8" y="102" width="264" height="42" rx="8" fill="rgba(43,212,199,0.06)" stroke="rgba(43,212,199,0.15)" stroke-width="0.75"/>
+                            <circle cx="22" cy="123" r="4.5" fill="#2bd4c7"/>
+                            <text x="34" y="116" fill="#0d6f6a" font-size="7.5" font-weight="700" font-family="Source Sans 3, sans-serif" letter-spacing="0.05em">GRID</text>
+                            <text x="34" y="130" fill="#0b1f33" font-size="9" font-family="Source Sans 3, sans-serif">High wind penetration &mdash; curtailment risk</text>
+                            <text x="252" y="124" fill="#0d6f6a" font-size="7" font-family="Source Sans 3, sans-serif">15:30</text>
+                            <!-- Demand row -->
+                            <rect x="8" y="150" width="264" height="42" rx="8" fill="rgba(21,88,214,0.04)" stroke="rgba(21,88,214,0.1)" stroke-width="0.75"/>
+                            <circle cx="22" cy="171" r="4.5" fill="#1558d6"/>
+                            <text x="34" y="164" fill="#1558d6" font-size="7.5" font-weight="700" font-family="Source Sans 3, sans-serif" letter-spacing="0.05em">DEMAND</text>
+                            <text x="34" y="178" fill="#0b1f33" font-size="9" font-family="Source Sans 3, sans-serif">Industrial below seasonal avg</text>
+                            <text x="252" y="172" fill="#1558d6" font-size="9" font-weight="700" font-family="Source Sans 3, sans-serif">&minus;8%</text>
+                            <!-- Fade hint (more events below) -->
+                            <defs>
+                                <linearGradient id="feed-fade" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#415a76" stop-opacity="0.06"/>
+                                    <stop offset="100%" stop-color="#415a76" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="8" y="198" width="264" height="10" rx="5" fill="url(#feed-fade)"/>
+                        </svg>
+                    </div>
+                    <h3>Market intelligence</h3>
+                    <p>REMIT alerts, gas plant outages, grid maintenance, imbalance prices, intraday volatility &mdash; concrete market data a trader would otherwise gather from multiple sources.</p>
+                </div>
+
+                <!-- Risk analysis column -->
+                <div class="wl-arch-col">
+                    <div class="wl-arch-visual">
+                        <svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Probability distribution with tail risk highlighted">
+                            <!-- Axes -->
+                            <line x1="30" y1="135" x2="285" y2="135" stroke="rgba(11,31,51,0.12)" stroke-width="0.75"/>
+                            <line x1="30" y1="15" x2="30" y2="135" stroke="rgba(11,31,51,0.08)" stroke-width="0.5"/>
+                            <!-- Y-axis label -->
+                            <text fill="#415a76" font-size="7" font-family="Source Sans 3, sans-serif" text-anchor="middle" transform="translate(12,75) rotate(-90)">Probability</text>
+                            <!-- X-axis labels -->
+                            <text x="70" y="149" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">&minus;40 MW</text>
+                            <text x="120" y="149" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">&minus;20 MW</text>
+                            <text x="170" y="149" fill="#1558d6" font-size="7.5" font-weight="600" font-family="Source Sans 3, sans-serif" text-anchor="middle">Expected</text>
+                            <text x="220" y="149" fill="#415a76" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">+20 MW</text>
+                            <text x="265" y="149" fill="#c43c2e" font-size="7.5" font-family="Source Sans 3, sans-serif" text-anchor="middle">+40 MW</text>
+                            <!-- Main distribution fill -->
+                            <path d="M30 135 C42 135,52 134,65 131 C80 124,95 112,110 94 C125 70,145 38,160 24 C170 18,180 24,190 42 C205 66,220 94,235 112 C248 124,258 131,270 134 C278 135,282 135,285 135 Z" fill="rgba(21,88,214,0.08)"/>
+                            <!-- Tail risk shading (right tail) -->
+                            <path d="M228 104 C238 114,248 122,255 128 C262 132,270 134,280 135 L280 135 Z" fill="rgba(196,60,46,0.15)"/>
+                            <!-- Distribution curve -->
+                            <path d="M30 135 C42 135,52 134,65 131 C80 124,95 112,110 94 C125 70,145 38,160 24 C170 18,180 24,190 42 C205 66,220 94,235 112 C248 124,258 131,270 134 C278 135,282 135,285 135" stroke="#1558d6" stroke-width="2" fill="none"/>
+                            <!-- Tail risk portion of curve (dashed red) -->
+                            <path d="M228 104 C238 114,248 122,255 128 C262 132,270 134,280 135" stroke="#c43c2e" stroke-width="2" stroke-dasharray="4 2" fill="none"/>
+                            <!-- Scheduled position line -->
+                            <line x1="170" y1="15" x2="170" y2="135" stroke="rgba(21,88,214,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+                            <text x="170" y="12" fill="#1558d6" font-size="7" font-weight="600" font-family="Source Sans 3, sans-serif" text-anchor="middle">Scheduled</text>
+                            <!-- Tail risk boundary line -->
+                            <line x1="240" y1="30" x2="240" y2="135" stroke="rgba(196,60,46,0.2)" stroke-width="0.75" stroke-dasharray="3 3"/>
+                            <!-- Tail risk annotation box -->
+                            <rect x="218" y="42" width="72" height="26" rx="4" fill="rgba(196,60,46,0.08)" stroke="rgba(196,60,46,0.2)" stroke-width="0.5"/>
+                            <text x="254" y="54" fill="#c43c2e" font-size="8" font-weight="700" font-family="Source Sans 3, sans-serif" text-anchor="middle">28% tail risk</text>
+                            <text x="254" y="64" fill="#c43c2e" font-size="7" font-family="Source Sans 3, sans-serif" text-anchor="middle">P(&gt;40 MW dev)</text>
+                            <!-- Exposure annotation -->
+                            <rect x="196" y="76" width="82" height="14" rx="3" fill="rgba(196,60,46,0.06)" stroke="rgba(196,60,46,0.15)" stroke-width="0.5"/>
+                            <text x="237" y="86" fill="#c43c2e" font-size="7.5" font-weight="600" font-family="Source Sans 3, sans-serif" text-anchor="middle">Exposure: &euro;7,800</text>
+                        </svg>
+                    </div>
+                    <h3>Risk analysis</h3>
+                    <p>Probabilistic uncertainty, ramp risk scoring, tail risk estimates, and imbalance exposure &mdash; computed for your specific site and calibrated to your risk tolerance.</p>
+                </div>
+            </div>
+
+            <!-- Connector: 3 columns flowing into agent (desktop) -->
+            <div class="wl-arch-connector" aria-hidden="true">
+                <svg viewBox="0 0 1200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Origin dots at column centers -->
+                    <circle cx="193" cy="4" r="4" fill="rgba(21,88,214,0.3)"/>
+                    <circle cx="600" cy="4" r="4" fill="rgba(21,88,214,0.3)"/>
+                    <circle cx="1007" cy="4" r="4" fill="rgba(21,88,214,0.3)"/>
+                    <!-- Left arm -->
+                    <path d="M193 4 C193 44,600 44,600 72" stroke="rgba(21,88,214,0.22)" stroke-width="2" fill="none"/>
+                    <!-- Center arm -->
+                    <line x1="600" y1="4" x2="600" y2="72" stroke="rgba(21,88,214,0.22)" stroke-width="2"/>
+                    <!-- Right arm -->
+                    <path d="M1007 4 C1007 44,600 44,600 72" stroke="rgba(21,88,214,0.22)" stroke-width="2" fill="none"/>
+                    <!-- Merge glow -->
+                    <circle cx="600" cy="72" r="7" fill="rgba(21,88,214,0.08)"/>
+                    <circle cx="600" cy="72" r="4" fill="rgba(21,88,214,0.35)"/>
+                </svg>
+            </div>
+
+            <!-- Mobile connector arrow (visible only on small screens) -->
+            <div class="wl-arch-connector-mobile" aria-hidden="true">
+                <svg viewBox="0 0 24 40" width="24" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="12" y1="0" x2="12" y2="30" stroke="rgba(21,88,214,0.25)" stroke-width="1.5"/>
+                    <polygon points="8,28 12,36 16,28" fill="rgba(21,88,214,0.3)"/>
+                </svg>
+            </div>
+
+            <!-- AI Agent box -->
+            <div class="wl-arch-agent">
+                <div class="wl-arch-agent-visual">
+                    <svg viewBox="0 0 280 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Example agent recommendation output">
+                        <!-- Card background -->
+                        <rect x="4" y="4" width="272" height="92" rx="10" fill="rgba(91,214,255,0.06)" stroke="rgba(91,214,255,0.15)" stroke-width="0.75"/>
+                        <!-- Header -->
+                        <rect x="14" y="14" width="6" height="6" rx="2" fill="#5bd6ff"/>
+                        <text x="26" y="19" fill="rgba(255,255,255,0.45)" font-size="6.5" font-family="Source Sans 3, sans-serif" letter-spacing="0.08em">AGENT RECOMMENDATION</text>
+                        <!-- Divider -->
+                        <line x1="14" y1="28" x2="262" y2="28" stroke="rgba(91,214,255,0.1)" stroke-width="0.5"/>
+                        <!-- Recommendation text -->
+                        <text x="14" y="44" fill="rgba(255,255,255,0.9)" font-size="10.5" font-weight="600" font-family="Source Sans 3, sans-serif">Reduce DA position by 15 MW</text>
+                        <text x="14" y="60" fill="rgba(255,255,255,0.6)" font-size="9" font-family="Source Sans 3, sans-serif">Hedge remaining volume in ID before 10:00</text>
+                        <!-- Metrics -->
+                        <rect x="14" y="72" width="78" height="18" rx="4" fill="rgba(43,212,199,0.12)" stroke="rgba(43,212,199,0.25)" stroke-width="0.5"/>
+                        <text x="53" y="84" fill="#2bd4c7" font-size="8" font-weight="600" font-family="Source Sans 3, sans-serif" text-anchor="middle">Save &euro;4,200</text>
+                        <rect x="100" y="72" width="72" height="18" rx="4" fill="rgba(91,214,255,0.08)" stroke="rgba(91,214,255,0.15)" stroke-width="0.5"/>
+                        <text x="136" y="84" fill="rgba(255,255,255,0.55)" font-size="8" font-family="Source Sans 3, sans-serif" text-anchor="middle">High confidence</text>
+                    </svg>
+                </div>
+                <div class="wl-arch-agent-body">
+                    <h3>AI trading agent</h3>
+                    <p>Sits on top of all three layers. Synthesises forecast uncertainty, market signals, and risk analysis into position recommendations tuned to your risk tolerance. Alerts you at critical moments: ramp events, model divergence, price spikes, gate closure deadlines.</p>
+                    <p class="wl-arch-agent-note">For when you don't have time to analyse everything yourself. The agent does the heavy lifting; you decide whether to follow, adjust, or override.</p>
+                </div>
+            </div>
+
+            <p class="wl-modularity-note">WindLens is modular &mdash; choose volume risk, market risk, or the full picture depending on your exposure.</p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
     <section class="wl-section" id="how-it-works">
         <div class="wl-container">
             <div class="wl-section-header">
@@ -113,140 +330,27 @@
                 <p class="wl-alert-caption">Example WindLens briefing &mdash; forecasts, market intelligence, risk analysis, and an AI-generated recommendation in one view.</p>
             </div>
 
-            <!-- How it works flow -->
-            <div class="wl-agent-steps">
+            <!-- Compact how-it-works steps -->
+            <div class="wl-agent-steps wl-agent-steps-compact">
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">1</span>
                     <h3>You connect your data</h3>
-                    <p>Share your site layout, historical production, and market position. WindLens learns the specifics of your assets.</p>
+                    <p>Site layout, historical production, and market position.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">2</span>
                     <h3>Models run continuously</h3>
-                    <p>WindLens ingests live weather models, runs site-specific simulations, and monitors market feeds &mdash; REMIT, imbalance prices, intraday signals &mdash; around the clock.</p>
+                    <p>Weather models, simulations, and market feeds &mdash; around the clock.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">3</span>
                     <h3>You get the full picture</h3>
-                    <p>Interpretable forecasts, real market drivers, and risk quantification &mdash; always available. Read it yourself, or let the AI agent do the analysis for you.</p>
+                    <p>Forecasts, market drivers, and risk &mdash; read it yourself or let the agent analyse.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">4</span>
                     <h3>You act with confidence</h3>
-                    <p>Follow the agent's recommendation, adjust based on your judgement, or dig into the underlying data. You stay in control.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Section (merged: 4 layers) -->
-    <section class="wl-section" id="product">
-        <div class="wl-container">
-            <div class="wl-section-header">
-                <p class="wl-eyebrow">Product</p>
-                <h2 class="wl-section-title">Four layers of trading intelligence</h2>
-                <p class="wl-section-subtitle">
-                    Each layer builds on the one before it. Use the information directly, or let the AI agent on top do the analysis for you.
-                </p>
-            </div>
-            <div class="wl-product-layers">
-                <article class="wl-product-layer">
-                    <div class="wl-product-layer-media">
-                        <img class="wl-feature-image" alt="Site specific forecasts" src="./assets/First_image.png" />
-                    </div>
-                    <div class="wl-product-layer-body">
-                        <span class="wl-product-layer-num">1</span>
-                        <h3>Site-specific forecasting</h3>
-                        <p>Numerical weather models combined with wind-farm flow simulations and machine learning calibrated on your plant data. Captures wake effects, terrain influence, and local patterns. Runs continuously with fast reforecasting as new NWP runs arrive.</p>
-                        <p class="wl-product-layer-highlight">Interpretable by design &mdash; a junior trader and a senior trader can both read the forecast drivers at their level.</p>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-forecast">Learn more</button>
-                    </div>
-                </article>
-                <article class="wl-product-layer wl-product-layer-reverse">
-                    <div class="wl-product-layer-media">
-                        <img class="wl-feature-image" alt="Market intelligence dashboard" src="./assets/Second_image.png" />
-                    </div>
-                    <div class="wl-product-layer-body">
-                        <span class="wl-product-layer-num">2</span>
-                        <h3>Market intelligence</h3>
-                        <p>Real information from the energy market that a trader would otherwise gather manually from multiple sources: REMIT alerts and outage notifications, gas plant and grid maintenance schedules, demand patterns and seasonal deviations, imbalance price signals, intraday volatility and liquidity dynamics.</p>
-                        <p class="wl-product-layer-highlight">Not abstract &ldquo;market context&rdquo; &mdash; concrete, actionable market data feeds integrated into one view.</p>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-market">Learn more</button>
-                    </div>
-                </article>
-                <article class="wl-product-layer">
-                    <div class="wl-product-layer-media">
-                        <img class="wl-feature-image" alt="Risk analysis and probabilistic insights" src="./assets/Third_image.png" />
-                    </div>
-                    <div class="wl-product-layer-body">
-                        <span class="wl-product-layer-num">3</span>
-                        <h3>Risk analysis</h3>
-                        <p>Probabilistic uncertainty quantification, ramp risk scoring, tail risk estimates, and imbalance exposure calculations. Models run in real time to produce insights that are computationally hard to generate &mdash; this is not a simple dashboard overlay.</p>
-                        <p class="wl-product-layer-highlight">Presented readably for users of different expertise levels. You can always understand why the risk level is what it is.</p>
-                        <button class="wl-feature-cta" type="button" data-modal="feature-risk">Learn more</button>
-                    </div>
-                </article>
-                <article class="wl-product-layer wl-product-layer-reverse wl-product-layer-agent">
-                    <div class="wl-product-layer-body">
-                        <span class="wl-product-layer-num">4</span>
-                        <h3>AI agent</h3>
-                        <p>Sits on top of all three layers. The agent processes forecast uncertainty, market intelligence, and risk analysis together &mdash; and synthesises it into position recommendations tuned to your risk tolerance. It alerts you during critical moments: ramp events, model divergence, price spikes, gate closure deadlines.</p>
-                        <p class="wl-product-layer-highlight">For when you don't have time to analyse everything yourself. The agent does the heavy lifting; you decide whether to follow, adjust, or override.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modules Section -->
-    <section class="wl-section" id="modules">
-        <div class="wl-container">
-            <div class="wl-section-header">
-                <p class="wl-eyebrow">Modules</p>
-                <h2 class="wl-section-title">Choose what fits your exposure</h2>
-                <p class="wl-section-subtitle">
-                    WindLens is modular. Pick the intelligence layer that matches the risk you carry.
-                </p>
-            </div>
-            <div class="wl-modules-grid">
-                <div class="wl-module-card">
-                    <div class="wl-module-header">
-                        <h3>Volume module</h3>
-                    </div>
-                    <p class="wl-module-for">For customers bearing <strong>volume risk</strong></p>
-                    <ul class="wl-module-features">
-                        <li>Alerts on portfolio-specific high-volume-risk events</li>
-                        <li>Analyses extensive historical data for your specific sites</li>
-                        <li>Interpretable, probabilistic position recommendations</li>
-                        <li>Ramp risk detection and quantified exposure estimates</li>
-                    </ul>
-                    <a href="#contact" class="wl-btn-primary wl-module-cta">Book a demo</a>
-                </div>
-                <div class="wl-module-card">
-                    <div class="wl-module-header">
-                        <h3>Market module</h3>
-                    </div>
-                    <p class="wl-module-for">For customers bearing <strong>price risk</strong></p>
-                    <ul class="wl-module-features">
-                        <li>REMIT alerts, grid events, and outage notifications</li>
-                        <li>Imbalance price signals and intraday volatility patterns</li>
-                        <li>Explains drivers behind price movements</li>
-                        <li>Settlement dynamics and liquidity monitoring</li>
-                    </ul>
-                    <a href="#contact" class="wl-btn-primary wl-module-cta">Book a demo</a>
-                </div>
-                <div class="wl-module-card">
-                    <div class="wl-module-header">
-                        <h3>Combined module</h3>
-                    </div>
-                    <p class="wl-module-for">For customers who want <strong>the full picture</strong></p>
-                    <ul class="wl-module-features">
-                        <li>Integrates volume and market risk into unified intelligence</li>
-                        <li>Total portfolio risk scoring across forecast and price</li>
-                        <li>AI agent recommendations that weigh both sides</li>
-                        <li>Tailored to your specific assets and market exposure</li>
-                    </ul>
-                    <a href="#contact" class="wl-btn-primary wl-module-cta">Talk to us</a>
+                    <p>Follow, adjust, or override. You stay in control.</p>
                 </div>
             </div>
         </div>
@@ -286,7 +390,7 @@
 
             <!-- Credibility -->
             <div class="wl-credibility-block">
-                <p class="wl-credibility-line">Founded by researchers from EPFL and MIT. 4 LOIs and 3 NDAs signed with major operators and traders. Active pilots running on real production data.</p>
+                <p class="wl-credibility-line">Founded by researchers from EPFL and MIT. Active pilots running on real production data.</p>
             </div>
 
             <!-- Partner logos -->
@@ -393,104 +497,10 @@
                 <h2 class="wl-footer-title">Company</h2>
                 <p class="wl-footer-link">Trading intelligence for wind energy.</p>
                 <a class="wl-footer-link" href="#product">Product</a>
-                <a class="wl-footer-link" href="#modules">Modules</a>
                 <a class="wl-footer-link" href="#contact">Contact us</a>
             </div>
         </div>
     </footer>
-
-    <!-- Feature Modals -->
-    <div class="wl-modal" id="feature-forecast" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feature-forecast-title">
-        <div class="wl-modal-overlay" data-modal-close></div>
-        <div class="wl-modal-content">
-            <button class="wl-modal-close" type="button" data-modal-close aria-label="Close">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                </svg>
-            </button>
-            <div class="wl-modal-grid">
-                <img src="./assets/First_image.png" alt="Site specific forecasts" />
-                <div>
-                    <p class="wl-modal-eyebrow">Layer 1</p>
-                    <h3 id="feature-forecast-title">Site-specific forecasting</h3>
-                    <p class="wl-modal-text">Numerical weather models combined with computational fluid dynamics simulations and machine learning calibration, tuned to the specific characteristics of each wind farm.</p>
-                    <ul class="wl-modal-list">
-                        <li>Wake effects and terrain influence modelled per site</li>
-                        <li>Confidence ranges calibrated by lead time</li>
-                        <li>Fast reforecasting as new NWP runs arrive</li>
-                        <li>Interpretable drivers &mdash; understand what's behind the numbers</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wl-modal" id="feature-market" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feature-market-title">
-        <div class="wl-modal-overlay" data-modal-close></div>
-        <div class="wl-modal-content">
-            <button class="wl-modal-close" type="button" data-modal-close aria-label="Close">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                </svg>
-            </button>
-            <div class="wl-modal-grid">
-                <img src="./assets/Second_image.png" alt="Market intelligence" />
-                <div>
-                    <p class="wl-modal-eyebrow">Layer 2</p>
-                    <h3 id="feature-market-title">Market intelligence</h3>
-                    <p class="wl-modal-text">Real market data feeds integrated into one view &mdash; the information a trader would otherwise gather manually from REMIT portals, TSO feeds, price trackers, and news sources.</p>
-                    <ul class="wl-modal-list">
-                        <li>REMIT alerts and outage notifications</li>
-                        <li>Gas plant and grid maintenance schedules</li>
-                        <li>Imbalance price signals and settlement dynamics</li>
-                        <li>Intraday volatility, liquidity, and demand patterns</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wl-modal" id="feature-risk" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feature-risk-title">
-        <div class="wl-modal-overlay" data-modal-close></div>
-        <div class="wl-modal-content">
-            <button class="wl-modal-close" type="button" data-modal-close aria-label="Close">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                </svg>
-            </button>
-            <div class="wl-modal-grid">
-                <img src="./assets/Third_image.png" alt="Risk analysis" />
-                <div>
-                    <p class="wl-modal-eyebrow">Layer 3</p>
-                    <h3 id="feature-risk-title">Risk analysis</h3>
-                    <p class="wl-modal-text">Real-time probabilistic analysis that is computationally intensive to produce. Models quantify uncertainty, ramp risk, and tail risk &mdash; presented in a way that is readable at any expertise level.</p>
-                    <ul class="wl-modal-list">
-                        <li>Probabilistic uncertainty quantification per forecast horizon</li>
-                        <li>Ramp risk scoring and tail risk estimates</li>
-                        <li>Imbalance exposure calculations at current position</li>
-                        <li>Driver attribution &mdash; understand why risk is elevated</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Image Lightbox -->
-    <div class="wl-lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
-        <div class="wl-lightbox-overlay" data-lightbox-close></div>
-        <div class="wl-lightbox-content">
-            <button class="wl-lightbox-close" type="button" data-lightbox-close aria-label="Close image">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                </svg>
-            </button>
-            <img id="lightbox-image" alt="Expanded visual" />
-        </div>
-    </div>
 
     <script src="./script.js"></script>
 </body>

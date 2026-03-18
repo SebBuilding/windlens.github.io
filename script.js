@@ -7,9 +7,8 @@ const navHeight = () => header?.getBoundingClientRect().height ?? 96;
 const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
 const NAV_ITEMS = [
-    { label: "How it works", id: "how-it-works" },
     { label: "Product", id: "product" },
-    { label: "Modules", id: "modules" },
+    { label: "How it works", id: "how-it-works" },
     { label: "Contact", id: "contact" },
 ];
 
@@ -197,74 +196,9 @@ if (quoteSlides.length) {
     resetTimer();
 }
 
-const modalTriggers = document.querySelectorAll("[data-modal]");
-const modalCloses = document.querySelectorAll("[data-modal-close]");
-const lightbox = document.getElementById("image-lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
-const lightboxCloses = document.querySelectorAll("[data-lightbox-close]");
-
-const openModal = (modal) => {
-    if (!modal) return;
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("wl-no-scroll");
-};
-
-const closeModal = (modal) => {
-    if (!modal) return;
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("wl-no-scroll");
-};
-
-modalTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-        const targetId = trigger.getAttribute("data-modal");
-        const modal = document.getElementById(targetId);
-        openModal(modal);
-    });
-});
-
-modalCloses.forEach((closeBtn) => {
-    closeBtn.addEventListener("click", (event) => {
-        const modal = event.target.closest(".wl-modal");
-        closeModal(modal);
-    });
-});
-
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         if (isMenuOpen()) closeMobileMenu();
-        const activeModal = document.querySelector(".wl-modal.is-open");
-        if (activeModal) closeModal(activeModal);
-        if (lightbox?.classList.contains("is-open")) closeLightbox();
     }
     trapFocus(event);
-});
-
-const openLightbox = (src, altText) => {
-    if (!lightbox || !lightboxImage) return;
-    lightboxImage.src = src;
-    lightboxImage.alt = altText || "Expanded visual";
-    lightbox.classList.add("is-open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.classList.add("wl-no-scroll");
-};
-
-const closeLightbox = () => {
-    if (!lightbox || !lightboxImage) return;
-    lightbox.classList.remove("is-open");
-    lightbox.setAttribute("aria-hidden", "true");
-    lightboxImage.src = "";
-    document.body.classList.remove("wl-no-scroll");
-};
-
-document.querySelectorAll(".wl-modal-grid img").forEach((img) => {
-    img.addEventListener("click", () => {
-        openLightbox(img.getAttribute("src"), img.getAttribute("alt"));
-    });
-});
-
-lightboxCloses.forEach((btn) => {
-    btn.addEventListener("click", closeLightbox);
 });
