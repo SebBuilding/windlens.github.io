@@ -32,10 +32,9 @@ let lastFocusedElement = null;
 let activeSectionId = "";
 
 const setActiveLink = (id) => {
-    if (!id) return;
-    activeSectionId = id;
+    activeSectionId = id || "";
     navItems.forEach((link) => {
-        link.classList.toggle("is-active", link.getAttribute("data-nav-target") === id);
+        link.classList.toggle("is-active", id && link.getAttribute("data-nav-target") === id);
     });
 };
 
@@ -93,12 +92,21 @@ const trapFocus = (event) => {
     }
 };
 
+let scrollLocked = false;
+
 const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
     const headerH = navHeight();
     const y = window.scrollY + el.getBoundingClientRect().top - headerH - 16;
+    scrollLocked = true;
     window.scrollTo({ top: y, behavior: "smooth" });
+    const unlock = () => {
+        scrollLocked = false;
+        window.removeEventListener("scrollend", unlock);
+    };
+    window.addEventListener("scrollend", unlock);
+    setTimeout(unlock, 1000);
 };
 
 navItems.forEach((link) => {
@@ -109,9 +117,6 @@ navItems.forEach((link) => {
         setActiveLink(targetId);
         closeMobileMenu();
         setTimeout(() => scrollToSection(targetId), 10);
-        if (isDev) {
-            console.debug("[NAV] click", link.textContent?.trim(), "->", targetId);
-        }
     });
 });
 
@@ -119,6 +124,7 @@ const sectionIds = NAV_ITEMS.map((item) => item.id);
 const sectionElements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
 const updateActiveSection = () => {
+    if (scrollLocked) return;
     const offset = navHeight() + 40;
     let currentId = "";
     for (const section of sectionElements) {
