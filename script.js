@@ -29,7 +29,7 @@ renderNav(mobileNav, "wl-nav-link");
 
 const navItems = Array.from(document.querySelectorAll("[data-nav-target]"));
 let lastFocusedElement = null;
-let activeSectionId = NAV_ITEMS[0]?.id || "";
+let activeSectionId = "";
 
 const setActiveLink = (id) => {
     if (!id) return;
@@ -115,51 +115,22 @@ navItems.forEach((link) => {
     });
 });
 
-let sectionObserver = null;
-const visibleSections = new Map();
-const setupObserver = () => {
-    if (sectionObserver) sectionObserver.disconnect();
-    const observerOptions = {
-        root: null,
-        rootMargin: "-25% 0px -65% 0px",
-        threshold: [0.2, 0.4, 0.6],
-    };
-    sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const id = entry.target.id;
-            if (!id) return;
-            if (entry.isIntersecting) {
-                visibleSections.set(id, entry.intersectionRatio);
-            } else {
-                visibleSections.delete(id);
-            }
-        });
-        let bestId = activeSectionId;
-        let bestRatio = 0;
-        visibleSections.forEach((ratio, id) => {
-            if (ratio > bestRatio) {
-                bestRatio = ratio;
-                bestId = id;
-            }
-        });
-        if (bestId) setActiveLink(bestId);
-    }, observerOptions);
+const sectionIds = NAV_ITEMS.map((item) => item.id);
+const sectionElements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+const updateActiveSection = () => {
+    const offset = navHeight() + 40;
+    let currentId = "";
+    for (const section of sectionElements) {
+        if (section.getBoundingClientRect().top <= offset) {
+            currentId = section.id;
+        }
+    }
+    setActiveLink(currentId);
 };
 
-const sectionIds = NAV_ITEMS.map((item) => item.id);
-setupObserver();
-sectionIds.forEach((id) => {
-    const section = document.getElementById(id);
-    if (section) sectionObserver.observe(section);
-});
-
-window.addEventListener("resize", () => {
-    setupObserver();
-    sectionIds.forEach((id) => {
-        const section = document.getElementById(id);
-        if (section) sectionObserver.observe(section);
-    });
-});
+window.addEventListener("scroll", updateActiveSection, { passive: true });
+updateActiveSection();
 
 const activateContactAtBottom = () => {
     const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
