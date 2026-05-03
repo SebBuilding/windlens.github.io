@@ -13,9 +13,9 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WindLens - Trading Intelligence for Wind Energy</title>
-    <meta name="description" content="Interpretable probabilistic forecasts, market price intelligence, and revenue risk analysis — everything wind energy traders and operators need to bid optimally based on their risk tolerance.">
-    <link rel="stylesheet" href="./output.css?v=20260319-01">
+    <title>WindLens — Everything you need to trade wind, in one place</title>
+    <meta name="description" content="A forecast-agnostic risk layer for wind trading. Turn your forecast's uncertainty and live market context into a bid position tuned to your risk tolerance. Pipe it as a signal, read it in the dashboard, or talk it through with an AI trading agent.">
+    <link rel="stylesheet" href="./output.css?v=20260501-02">
     <link rel="shortcut icon" href="./assets/WindLens_short_logo.png" type="image/png">
 </head>
 
@@ -59,10 +59,10 @@
             <div class="wl-hero-content">
                 <p class="wl-hero-kicker">Trading intelligence for wind energy</p>
                 <h1 class="wl-hero-title">
-                    Everything you need to trade wind &mdash; in one place
+                    Everything you need to trade wind, in one place.
                 </h1>
                 <p class="wl-hero-subtitle">
-                    Interpretable, site-specific probabilistic forecasts. Market intelligence that tells you what&rsquo;s driving prices and imbalance. A risk engine that combines both into revenue scenarios &mdash; so you can bid optimally for your risk tolerance. And an AI agent that runs the analysis when you don&rsquo;t have time.
+                    A forecast-agnostic risk layer for wind trading. We turn your forecast&rsquo;s uncertainty and live market context into a full revenue distribution and a bid position tuned to your risk tolerance. Pipe it as a signal into your workflow, read it in the dashboard, or talk it through with an AI trading agent.
                 </p>
                 <div class="wl-hero-actions">
                     <a href="#contact" class="wl-btn-primary">
@@ -72,10 +72,23 @@
                         See how it works
                     </a>
                 </div>
-                <ul class="wl-hero-outcomes">
-                    <li>Probabilistic forecasts you can read, interpret, and trust &mdash; at any expertise level</li>
-                    <li>Market drivers and their concrete impact on prices and imbalance</li>
-                    <li>Revenue risk analysis that tells you how to bid based on your risk tolerance</li>
+                <ul class="wl-hero-pillars">
+                    <li>
+                        <span class="wl-hero-pillar-title">Regime-aware intelligence</span>
+                        <span class="wl-hero-pillar-desc">across weather and markets</span>
+                    </li>
+                    <li>
+                        <span class="wl-hero-pillar-title">Asset-specific calibration</span>
+                        <span class="wl-hero-pillar-desc">one model per wind farm</span>
+                    </li>
+                    <li>
+                        <span class="wl-hero-pillar-title">Forecast-agnostic integration</span>
+                        <span class="wl-hero-pillar-desc">drop-in on your existing stack</span>
+                    </li>
+                    <li>
+                        <span class="wl-hero-pillar-title">End-to-end risk translation</span>
+                        <span class="wl-hero-pillar-desc">tuned to your risk tolerance</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -86,26 +99,28 @@
         <div class="wl-container">
             <div class="wl-section-header">
                 <p class="wl-eyebrow">Product</p>
-                <h2 class="wl-section-title">Two intelligence layers, one risk engine</h2>
+                <h2 class="wl-section-title">From forecast uncertainty to bid position.</h2>
                 <p class="wl-section-subtitle">
-                    Probabilistic forecasts and market intelligence flow into a revenue risk engine that computes optimal positions for your risk tolerance. An AI agent can run the full analysis &mdash; you focus on the decisions.
+                    Your asset&rsquo;s forecast uncertainty, the system&rsquo;s imbalance state, and live market signals feed a revenue risk engine that computes the optimal position for your risk tolerance. An AI agent can run the full analysis &mdash; you focus on the decisions.
                 </p>
             </div>
 
-            <!-- Product diagram: compact left-to-right flow -->
+            <!-- Product diagram: forecast uncertainty + market context -> risk engine -> bid position -->
             <div class="wl-product-diagram">
                 <!-- Left: input layers -->
                 <div class="wl-product-inputs">
                     <div class="wl-product-input">
                         <span class="wl-product-input-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 3v18h18"/>
-                                <path d="M7 16l4-8 4 4 4-10"/>
+                                <path d="M3 20c2-6 5-9 9-9s7 3 9 9"/>
+                                <path d="M3 20c2-3 5-4.5 9-4.5s7 1.5 9 4.5"/>
+                                <path d="M12 11V4"/>
+                                <circle cx="12" cy="20" r="1.2" fill="currentColor"/>
                             </svg>
                         </span>
                         <div>
-                            <h3>Interpretable probabilistic forecasting</h3>
-                            <p>Site-specific scenario distributions with interpretable drivers &mdash; terrain, wake effects, model divergence. Each scenario maps to a production outcome you can read and understand.</p>
+                            <h3>Forecast uncertainty intelligence</h3>
+                            <p>We work on top of your existing forecast &mdash; any provider, any vintage. Our models learn how its uncertainty behaves at <em>your</em> site: where errors cluster, when ensembles diverge, and which regimes the forecast handles badly.</p>
                         </div>
                     </div>
                     <div class="wl-product-input">
@@ -115,8 +130,8 @@
                             </svg>
                         </span>
                         <div>
-                            <h3>Market intelligence</h3>
-                            <p>Price drivers and their concrete impact on imbalance &mdash; REMIT alerts, grid events, gas outages, demand shifts, intraday liquidity.</p>
+                            <h3>Market context</h3>
+                            <p>Active price and imbalance drivers &mdash; REMIT events, grid outages, demand shifts, intraday liquidity &mdash; translated into concrete impact on your portfolio&rsquo;s exposure.</p>
                         </div>
                     </div>
                 </div>
@@ -137,28 +152,34 @@
                     </div>
                 </div>
 
-                <!-- Right: risk engine with integrated agent -->
+                <!-- Right: risk engine with bid-position output and AI agent overlay -->
                 <div class="wl-product-engine">
                     <h3>Revenue risk engine</h3>
-                    <p>For every forecast scenario, computes the price impact from active market conditions &mdash; full probability distribution of your revenue outcomes. See which events carry the highest impact, where your tail risk sits, and what the optimal position is for your risk tolerance.</p>
-                    <p class="wl-product-engine-note">WindLens helps you understand how your positions perform under real market conditions &mdash; because that&rsquo;s what drives revenue.</p>
+                    <p>For every scenario in your forecast distribution, we compute the price and imbalance impact under current market conditions &mdash; a full revenue distribution. See where your tail risk sits, which events drive it, and the optimal position for your risk tolerance.</p>
+                    <div class="wl-product-output" aria-label="Bid position output">
+                        <span class="wl-product-output-label">Bid position</span>
+                        <span class="wl-product-output-value">52 MW <span class="wl-product-output-meta">for 14&ndash;18 CET</span></span>
+                    </div>
                     <div class="wl-product-agent-embed">
                         <div class="wl-product-agent-header">
                             <span class="wl-product-agent-badge">AI AGENT</span>
-                            <span class="wl-product-agent-desc">Runs the full analysis for you &mdash; you focus on reviewing, improving, and deciding</span>
+                            <span class="wl-product-agent-desc">A trader-like layer over the algorithmic bid. Push back, ask &ldquo;what if&rdquo;, take more or less risk.</span>
                         </div>
-                        <div class="wl-product-agent-output">
-                            <span class="wl-product-agent-rec">&rarr; Reduce position to 52 MW for hours 14&ndash;18</span>
-                            <div class="wl-product-agent-tags">
-                                <span class="wl-product-agent-save">Save &euro;2,400</span>
-                                <span class="wl-product-agent-risk">Mod-conservative</span>
+                        <div class="wl-product-agent-dialog">
+                            <div class="wl-product-agent-msg wl-product-agent-msg-user">
+                                <span class="wl-product-agent-msg-from">You</span>
+                                <span class="wl-product-agent-msg-text">GFS frontal timing looks tighter than yesterday. What if we push to 60 MW?</span>
+                            </div>
+                            <div class="wl-product-agent-msg wl-product-agent-msg-agent">
+                                <span class="wl-product-agent-msg-from">Agent</span>
+                                <span class="wl-product-agent-msg-text">At 60 MW: &euro;1,400 more downside, &euro;2,100 more upside, net +&euro;420. Sits at the top of your moderate-conservative band. Want me to size an intraday hedge to keep the upside without the tail?</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="wl-modularity-note">WindLens is modular &mdash; use it for volume risk, market risk, or the full picture depending on your exposure.</p>
+            <p class="wl-modularity-note"><strong>WindLens is modular. Pick what fits your desk:</strong> a clean bid signal in your workflow, the full risk picture you can read and audit, or an AI trading agent you can reason with, one that goes a step beyond the algorithmic position.</p>
         </div>
     </section>
 
@@ -169,7 +190,7 @@
                 <p class="wl-eyebrow">How it works</p>
                 <h2 class="wl-section-title">The full picture, delivered to you</h2>
                 <p class="wl-section-subtitle">
-                    WindLens gives you interpretable forecasts, market context, and a full revenue risk analysis you can read and act on. When you need it, the AI agent runs the analysis for you.
+                    WindLens connects your forecast uncertainty to market context, delivers a full revenue risk analysis you can read and act on, and &mdash; when you want it &mdash; an AI trading agent that takes the analysis off your plate.
                 </p>
             </div>
 
@@ -183,8 +204,8 @@
                     <h3 class="wl-alert-title">Revenue risk alert &mdash; Offshore Wind Park North Sea</h3>
                     <div class="wl-alert-body">
                         <div class="wl-alert-section">
-                            <p class="wl-alert-label">Forecast uncertainty</p>
-                            <p class="wl-alert-text">Three distinct scenario clusters for 14:00&ndash;18:00. High wind (35% probability): 78 MW &mdash; GFS frontal passage timing. Central (40%): 58 MW &mdash; ECMWF ensemble mean. Low wind (25%): 42 MW &mdash; delayed front, wake-amplified losses. Your schedule: 65 MW. Key driver: GFS and ECMWF disagree by 8 m/s on frontal timing.</p>
+                            <p class="wl-alert-label">Forecast uncertainty <span class="wl-alert-sublabel">(your forecast, our analysis)</span></p>
+                            <p class="wl-alert-text">Three distinct scenario clusters from your forecast for 14:00&ndash;18:00. High wind (35%): 78 MW &mdash; GFS frontal passage timing. Central (40%): 58 MW &mdash; ECMWF ensemble mean. Low wind (25%): 42 MW &mdash; delayed front, wake-amplified losses. Your schedule: 65 MW. Key driver: GFS and ECMWF disagree by 8 m/s on frontal timing.</p>
                         </div>
                         <div class="wl-alert-section">
                             <p class="wl-alert-label">Active price drivers</p>
@@ -195,12 +216,12 @@
                             <p class="wl-alert-text">High wind scenario (35%): overproduction of 13 MW &times; elevated negative imbalance &rarr; penalty &euro;3,400. Central (40%): minor deviation, exposure &euro;800. Low wind scenario (25%): underproduction of 23 MW &times; &euro;120/MWh imbalance &rarr; penalty &euro;6,900. Weighted expected penalty at current position: &euro;3,200. Optimal position for your risk tolerance: 52 MW.</p>
                         </div>
                         <div class="wl-alert-section wl-alert-recommendation">
-                            <p class="wl-alert-label">AI agent recommendation</p>
-                            <p class="wl-alert-text">Reduce day-ahead position to 52 MW for hours 14&ndash;18. Hedge 8 MW in intraday before 10:00 gate closure while liquidity is available. Expected penalty reduction: &euro;2,400. Optimised for your configured risk tolerance (moderate-conservative).</p>
+                            <p class="wl-alert-label">AI agent &mdash; one step beyond</p>
+                            <p class="wl-alert-text">The risk engine&rsquo;s optimal position is 52 MW. Beyond that, the agent suggests hedging 8 MW in intraday before the 10:00 gate closure while liquidity is still there. If you want to lean into the ECMWF central case, take more risk on the GFS scenario, or talk through a different stance, ask &mdash; the agent re-runs the trade-offs with you in seconds.</p>
                         </div>
                     </div>
                 </div>
-                <p class="wl-alert-caption">Example WindLens briefing &mdash; probabilistic forecast scenarios, market price drivers, revenue risk analysis, and an optimal position recommendation.</p>
+                <p class="wl-alert-caption">How a WindLens briefing reads on a high-risk window.</p>
             </div>
 
             <!-- Compact how-it-works steps -->
@@ -208,17 +229,17 @@
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">1</span>
                     <h3>You connect your data</h3>
-                    <p>Site layout, historical production, and market position.</p>
+                    <p>Your forecast feed, site layout, historical production, and market position.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">2</span>
-                    <h3>Models run continuously</h3>
-                    <p>Weather models, simulations, and market feeds &mdash; around the clock.</p>
+                    <h3>We characterise your forecast and the market</h3>
+                    <p>Forecast uncertainty calibrated to your site, market and imbalance signals scored continuously.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">3</span>
-                    <h3>You get the full picture</h3>
-                    <p>Forecasts, market drivers, and revenue risk &mdash; read it yourself or let the agent analyse.</p>
+                    <h3>Adjusted bid positions tuned to your risk tolerance</h3>
+                    <p>With the full risk analysis underneath, and AI-agent-suggested moves on top.</p>
                 </div>
                 <div class="wl-agent-step">
                     <span class="wl-agent-step-num">4</span>
@@ -243,7 +264,7 @@
                         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     </span>
                     <h3>Operators</h3>
-                    <p>Plan dispatch, curtailment, and maintenance with confidence. Understand how forecast uncertainty translates into revenue risk before it hits your schedule.</p>
+                    <p>Plan dispatch, curtailment, and maintenance with confidence. See how your forecast&rsquo;s uncertainty translates into revenue risk before it hits your schedule.</p>
                 </div>
                 <div class="wl-audience-card">
                     <span class="wl-audience-icon" aria-hidden="true">
