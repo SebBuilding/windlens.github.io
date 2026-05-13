@@ -1809,6 +1809,77 @@ section[id] {
     font-style: italic;
 }
 
+/* AI agent emphasis section card */
+.wl-agent-emphasis-card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(11, 31, 51, 0.96), rgba(15, 48, 86, 0.92));
+    color: #fff;
+    box-shadow: 0 20px 50px rgba(13, 35, 66, 0.18);
+}
+
+.wl-agent-emphasis-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wl-agent-emphasis-bubble {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.wl-agent-emphasis-from {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.wl-agent-emphasis-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.wl-agent-emphasis-bubble-user .wl-agent-emphasis-text {
+    color: rgba(255, 255, 255, 0.78);
+    font-style: italic;
+}
+
+.wl-agent-emphasis-bubble-agent {
+    background: rgba(91, 214, 255, 0.07);
+    border-color: rgba(91, 214, 255, 0.18);
+}
+
+.wl-agent-emphasis-bubble-agent .wl-agent-emphasis-from {
+    color: #5bd6ff;
+}
+
+.wl-agent-emphasis-footnote {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-style: italic;
+}
+
+@media (max-width: 640px) {
+    .wl-agent-emphasis-bubble {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
+
 /* Credibility block */
 .wl-credibility-block {
     margin-top: 32px;
