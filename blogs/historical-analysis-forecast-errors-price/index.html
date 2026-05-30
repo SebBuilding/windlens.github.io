@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLFEW80SQ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QLFEW80SQ6');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical analysis of forecast errors on price | WindLens</title>
+    <meta name="description" content="Interactive historical analysis of how wind, solar, load, and residual-load forecast errors have affected European imbalance price corrections.">
+    <link rel="stylesheet" href="/output.css?v=20260513-02">
+    <link rel="stylesheet" href="/site-nav.css?v=20260530-01">
+    <link rel="stylesheet" href="/blogs/historical-analysis-forecast-errors-price/blog-page.css?v=20260530-01">
+    <link rel="shortcut icon" href="/assets/WindLens_short_logo.png" type="image/png">
+</head>
+
+<body class="wl-page">
+    <nav class="wl-nav" id="site-header">
+        <div class="wl-container wl-nav-inner">
+            <a href="/" class="wl-logo-link" aria-label="WindLens home">
+                <img class="wl-logo" alt="WindLens logo" src="/assets/WindLens_logo_white.png" />
+            </a>
+            <div class="hidden lg:flex items-center gap-8 transition duration-500" id="nav-desktop"></div>
+            <button class="lg:hidden wl-icon-button" id="menu-button" aria-label="Open menu" aria-controls="nav-overlay" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-menu size-6.5" aria-hidden="true">
+                    <path d="M4 5h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 19h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="nav-overlay" class="wl-nav-overlay" aria-hidden="true">
+        <div class="wl-nav-backdrop" data-nav-close></div>
+        <div class="wl-nav-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+            <button id="close-menu" class="wl-icon-button wl-nav-close" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-x" aria-hidden="true">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+            </button>
+            <div id="nav-mobile" class="wl-nav-list"></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="wl-blog-hero">
+            <div class="wl-container wl-blog-hero-inner">
+                <div class="wl-blog-hero-copy">
+                    <p class="wl-eyebrow">Blogs</p>
+                    <h1 class="wl-blog-title">Historical analysis of forecast errors on price</h1>
+                </div>
+                <div class="wl-blog-meta-card">
+                    <span class="wl-blog-meta-label">Current scope</span>
+                    <strong class="wl-blog-meta-value">DE, BE, FI, PL</strong>
+                    <span class="wl-blog-meta-note">2025 ENTSO-E single-price imbalance markets</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="wl-blog-section">
+            <div class="wl-container">
+                <div class="wl-blog-summary">
+                    <div class="wl-blog-summary-card">
+                        <span class="wl-blog-summary-label">What this shows</span>
+                        <p>
+                            The map ranks markets by estimated historical impact of wind, solar, load, and residual-load forecast errors on the imbalance spread relative to day-ahead power prices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wl-blog-dashboard-shell">
+                    <div class="wl-blog-dashboard-header">
+                        <div>
+                            <p class="wl-eyebrow">Interactive dashboard</p>
+                            <h2 class="wl-blog-dashboard-title">Explore historical forecast-error impact</h2>
+                        </div>
+                        <a class="wl-btn-secondary-dark" href="/#contact">Discuss this with WindLens</a>
+                    </div>
+                    <iframe
+                        id="forecast-error-dashboard-frame"
+                        class="wl-blog-dashboard-frame"
+                        src="/blogs/historical-analysis-forecast-errors-price/dashboard/"
+                        title="Historical analysis of forecast errors on price dashboard"
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/script.js"></script>
+    <script src="/blogs/historical-analysis-forecast-errors-price/blog-page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WindLens</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <div class="map-panel">
+          <div class="map-header">
+            <div>
+              <p class="panel-label">Map metric</p>
+              <h2 id="map-title">Impact of forecast error on market price</h2>
+            </div>
+            <div class="legend">
+              <div class="legend-bar"></div>
+              <div class="legend-labels">
+                <span id="legend-min">0</span>
+                <span id="legend-max">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-stage">
+            <svg id="map-svg" viewBox="0 0 1100 760" aria-labelledby="map-title" role="img">
+              <defs>
+                <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#020817" flood-opacity="0.18" />
+                </filter>
+              </defs>
+
+              <rect x="0" y="0" width="1100" height="760" rx="28" class="sea" />
+              <g id="panzoom-layer" class="panzoom-layer">
+                <g id="countries-layer" class="countries-layer"></g>
+                <g id="market-layer" class="market-layer" filter="url(#softShadow)"></g>
+                <g id="label-layer" class="label-layer"></g>
+              </g>
+            </svg>
+
+            <aside id="detail-overlay" class="detail-overlay" hidden>
+              <button id="detail-close" class="detail-close" type="button" aria-label="Close market details">×</button>
+              <p class="panel-label">Selected market</p>
+              <h2 id="detail-market-name">Germany</h2>
+              <p id="detail-period-driver" class="detail-subtitle"></p>
+
+              <div class="metric-rows">
+                <div class="metric-row">
+                  <span class="metric-label">1σ impact</span>
+                  <strong id="detail-impact" class="metric-row-value">0.0 €/MWh</strong>
+                </div>
+
+                <div class="metric-row">
+                  <span class="metric-label" id="detail-reference-label">Installed capacity</span>
+                  <strong id="detail-reference-value" class="metric-row-value">0 MW</strong>
+                </div>
+
+                <div class="metric-row">
+                  <span class="metric-label">Sensitivity</span>
+                  <strong id="detail-sensitivity" class="metric-row-value">0.0 €/MWh/GW</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <p class="map-footnote">
+            * Estimated average difference between the imbalance price and the day-ahead price associated with a forecast error equal to one standard deviation of the selected variable. Units are €/MWh per 1 standard deviation of forecast error.
+          </p>
+        </div>
+
+        <aside class="control-panel">
+          <div class="control-card control-block">
+            <label class="control-label" for="period-select">Period</label>
+            <select id="period-select" class="period-select"></select>
+          </div>
+
+          <div class="control-card control-block">
+            <span class="control-label">Driver</span>
+            <div id="driver-buttons" class="driver-buttons" role="tablist" aria-label="Driver selector"></div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+.wl-blog-hero {
+    padding: 96px 0 42px;
+}
+
+.wl-blog-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+    gap: 28px;
+    align-items: end;
+}
+
+.wl-blog-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.02;
+}
+
+.wl-blog-subtitle {
+    max-width: 50rem;
+    margin-top: 16px;
+    color: var(--wl-ink-muted);
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.wl-blog-meta-card,
+.wl-blog-summary-card,
+.wl-blog-dashboard-shell {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(11, 31, 51, 0.08);
+    border-radius: 24px;
+    box-shadow: var(--wl-shadow);
+    backdrop-filter: blur(16px);
+}
+
+.wl-blog-meta-card {
+    display: grid;
+    gap: 10px;
+    padding: 22px;
+}
+
+.wl-blog-meta-label,
+.wl-blog-summary-label {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wl-ink-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.wl-blog-meta-value {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    line-height: 1.05;
+}
+
+.wl-blog-meta-note {
+    color: var(--wl-ink-muted);
+    font-size: 0.93rem;
+    line-height: 1.5;
+}
+
+.wl-blog-section {
+    padding: 0 0 80px;
+}
+
+.wl-blog-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.wl-blog-summary-card {
+    padding: 22px;
+}
+
+.wl-blog-summary-card p {
+    margin-top: 12px;
+    color: var(--wl-ink);
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+.wl-blog-dashboard-shell {
+    margin-top: 22px;
+    padding: 22px;
+}
+
+.wl-blog-dashboard-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.wl-blog-dashboard-title {
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    line-height: 1.08;
+}
+
+.wl-blog-dashboard-frame {
+    width: 100%;
+    min-height: 920px;
+    border: 0;
+    border-radius: 20px;
+    background: #f4f7fb;
+    display: block;
+}
+
+@media (max-width: 960px) {
+    .wl-blog-hero-inner,
+    .wl-blog-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wl-blog-dashboard-header {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (max-width: 640px) {
+    .wl-blog-hero {
+        padding-top: 74px;
+    }
+
+    .wl-blog-dashboard-shell,
+    .wl-blog-summary-card,
+    .wl-blog-meta-card {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .wl-blog-dashboard-frame {
+        min-height: 860px;
+        border-radius: 16px;
+    }
+}
