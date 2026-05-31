@@ -166,7 +166,7 @@ h1 {
 .legend-bar {
   height: 12px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #dbeafe 0%, #60a5fa 45%, #1d4ed8 100%);
+  background: linear-gradient(90deg, #c2410c 0%, #fdba74 35%, #f8fafc 50%, #93c5fd 65%, #1d4ed8 100%);
   border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
@@ -239,6 +239,11 @@ h1 {
 .market-shape.is-selected {
   stroke: #17376d;
   stroke-width: 3.1;
+}
+
+.market-shape.is-unavailable {
+  cursor: default;
+  opacity: 0.9;
 }
 
 .market-label {
@@ -355,6 +360,24 @@ h1 {
   text-transform: uppercase;
 }
 
+.metric-label-natural {
+  text-transform: none;
+}
+
+.metric-label-group {
+  display: block;
+}
+
+.metric-label-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .metric-row {
   display: flex;
   align-items: baseline;
@@ -376,6 +399,34 @@ h1 {
   font-size: 16px;
   line-height: 1.05;
   font-weight: 700;
+}
+
+.detail-warning {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(194, 65, 12, 0.08);
+  border: 1px solid rgba(194, 65, 12, 0.18);
+}
+
+.detail-warning[hidden] {
+  display: none;
+}
+
+.detail-warning-title {
+  margin: 0 0 4px;
+  color: #9a3412;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detail-warning-text {
+  margin: 0;
+  color: #7c2d12;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 @media (max-width: 520px) {

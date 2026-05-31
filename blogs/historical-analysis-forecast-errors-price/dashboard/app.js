@@ -37,7 +37,8 @@ async function loadMapAsset() {
   const detailImpact = document.getElementById("detail-impact");
   const detailReferenceLabel = document.getElementById("detail-reference-label");
   const detailReferenceValue = document.getElementById("detail-reference-value");
-  const detailSensitivity = document.getElementById("detail-sensitivity");
+  const detailWarning = document.getElementById("detail-warning");
+  const detailWarningText = document.getElementById("detail-warning-text");
 
   const mapSvg = document.getElementById("map-svg");
   const mapStage = document.querySelector(".map-stage");
@@ -46,19 +47,30 @@ async function loadMapAsset() {
   const marketLayer = document.getElementById("market-layer");
   const labelLayer = document.getElementById("label-layer");
 
+  const driverOrder = ["wind", "solar", "load", "residual_load"];
+  const periodEntries = Object.entries(data.periods)
+    .map(([code, period]) => ({ code, ...period }))
+    .sort((left, right) => {
+      const leftOrder = Number(left.sort_order ?? Number.MAX_SAFE_INTEGER);
+      const rightOrder = Number(right.sort_order ?? Number.MAX_SAFE_INTEGER);
+      return leftOrder - rightOrder || left.label.localeCompare(right.label);
+    });
+  const defaultPeriod = (
+    periodEntries.find((period) => period.code === "year_2025")
+    || periodEntries.find((period) => period.code === "all")
+    || periodEntries[0]
+  )?.code;
   const state = {
-    period: "12M",
+    period: defaultPeriod,
     driver: "wind",
     market: null,
   };
-
-  const periodOrder = ["1M", "3M", "6M", "12M", "full_2025"];
-  const driverOrder = ["wind", "solar", "load", "residual_load"];
   const activeCodes = new Set(Object.keys(data.markets));
   const marketNodes = {};
   const labelAnchors = {};
   const labelGroups = {};
   const valueNodes = {};
+  const codeNodes = {};
   const viewState = {
     scale: 1,
     tx: 0,
@@ -145,29 +157,40 @@ async function loadMapAsset() {
   }
 
   function impactRange(markets) {
-    const values = Object.values(markets).map((market) => market.impact_per_1sigma_eur_per_mwh);
+    const values = Object.values(markets)
+      .filter((market) => market && market.available && market.impact_per_1sigma_eur_per_mwh != null)
+      .map((market) => market.impact_per_1sigma_eur_per_mwh);
+    if (!values.length) {
+      return { min: 0, max: 0 };
+    }
     return {
       min: Math.min(...values),
       max: Math.max(...values),
     };
   }
 
+  function divergingLimit(min, max) {
+    return Math.max(Math.abs(min), Math.abs(max));
+  }
+
   function colorForValue(value, min, max) {
-    if (max <= min) {
+    const limit = divergingLimit(min, max);
+    if (!Number.isFinite(limit) || limit <= 0) {
       return "hsl(216, 82%, 48%)";
     }
-    const ratio = (value - min) / (max - min);
-    const hue = 216;
-    const saturation = 82;
-    const lightness = 84 - ratio * 52;
+    const ratio = Math.min(Math.abs(value) / limit, 1);
+    const hue = value >= 0 ? 216 : 14;
+    const saturation = value >= 0 ? 82 : 88;
+    const lightness = 90 - ratio * 44;
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
 
   function textColorForValue(value, min, max) {
-    if (max <= min) {
+    const limit = divergingLimit(min, max);
+    if (!Number.isFinite(limit) || limit <= 0) {
       return "#0f172a";
     }
-    return (value - min) / (max - min) > 0.56 ? "#ffffff" : "#0f172a";
+    return Math.abs(value) / limit > 0.62 ? "#ffffff" : "#0f172a";
   }
 
   function setLabelTheme(code, foreground) {
@@ -175,6 +198,32 @@ async function loadMapAsset() {
     group.querySelector(".label-chip").setAttribute("fill", "rgba(255, 255, 255, 0.88)");
     group.querySelector(".label-code").setAttribute("fill", foreground);
     group.querySelector(".label-value").setAttribute("fill", foreground);
+  }
+
+  function resizeLabelChip(code) {
+    const group = labelGroups[code];
+    const codeText = codeNodes[code];
+    const valueText = valueNodes[code];
+    if (!group || !codeText || !valueText) {
+      return;
+    }
+    const rect = group.querySelector(".label-chip");
+    if (!rect) {
+      return;
+    }
+
+    const codeBox = codeText.getBBox();
+    const valueBox = valueText.getBBox();
+    const leftPad = 14;
+    const rightPad = 14;
+    const topPad = 8;
+    const bottomPad = 10;
+    const maxWidth = Math.max(codeBox.width, valueBox.width);
+
+    rect.setAttribute("x", String(-leftPad));
+    rect.setAttribute("y", String(-topPad));
+    rect.setAttribute("width", String(Math.ceil(maxWidth + leftPad + rightPad)));
+    rect.setAttribute("height", String(Math.ceil(valueBox.y + valueBox.height + bottomPad + topPad)));
   }
 
   function updateLabelTransform(code) {
@@ -210,10 +259,6 @@ async function loadMapAsset() {
 
     const rect = svgEl("rect");
     rect.setAttribute("class", "label-chip");
-    rect.setAttribute("x", "-14");
-    rect.setAttribute("y", "-8");
-    rect.setAttribute("width", label.leader ? "138" : "150");
-    rect.setAttribute("height", "58");
     rect.setAttribute("rx", "14");
 
     const codeText = svgEl("text");
@@ -232,7 +277,9 @@ async function loadMapAsset() {
     labelLayer.appendChild(group);
     labelAnchors[code] = { x, y };
     labelGroups[code] = group;
+    codeNodes[code] = codeText;
     valueNodes[code] = valueText;
+    resizeLabelChip(code);
     updateLabelTransform(code);
   }
 
@@ -292,6 +339,10 @@ async function loadMapAsset() {
       if (!viewState.dragging || event.pointerId !== viewState.pointerId) {
         return;
       }
+      if ((event.buttons & 1) !== 1) {
+        endDrag(event);
+        return;
+      }
       const deltaX = event.clientX - viewState.dragStartX;
       const deltaY = event.clientY - viewState.dragStartY;
       if (!viewState.moved) {
@@ -314,7 +365,7 @@ async function loadMapAsset() {
         return;
       }
       if (!viewState.moved && viewState.downTargetCode && marketNodes[viewState.downTargetCode]) {
-        state.market = viewState.downTargetCode;
+        selectMarket(viewState.downTargetCode);
         render();
       } else if (!viewState.moved && state.market !== null) {
         state.market = null;
@@ -325,6 +376,9 @@ async function loadMapAsset() {
       viewState.downTargetCode = null;
       viewState.moved = false;
       mapStage.classList.remove("is-dragging");
+      if (event.pointerId != null && mapStage.hasPointerCapture(event.pointerId)) {
+        mapStage.releasePointerCapture(event.pointerId);
+      }
     }
 
     mapStage.addEventListener("pointerup", endDrag);
@@ -356,12 +410,25 @@ async function loadMapAsset() {
     legendMax.textContent = `${formatNumber(range.max, 1)} €/MWh`;
     mapTitle.textContent = mapTitleForDriver(state.driver);
 
-    Object.entries(markets).forEach(([code, market]) => {
+    Object.keys(data.markets).forEach((code) => {
+      const market = markets[code];
+      const available = Boolean(market && market.available && market.impact_per_1sigma_eur_per_mwh != null);
+      if (!available) {
+        marketNodes[code].style.setProperty("--market-fill", "#cbd5e1");
+        marketNodes[code].classList.remove("is-selected");
+        marketNodes[code].classList.add("is-unavailable");
+        labelGroups[code].style.display = "none";
+        return;
+      }
+
       const fill = colorForValue(market.impact_per_1sigma_eur_per_mwh, range.min, range.max);
       const fg = textColorForValue(market.impact_per_1sigma_eur_per_mwh, range.min, range.max);
       marketNodes[code].style.setProperty("--market-fill", fill);
       marketNodes[code].classList.toggle("is-selected", code === state.market);
+      marketNodes[code].classList.remove("is-unavailable");
+      labelGroups[code].style.display = "";
       valueNodes[code].textContent = `${formatNumber(market.impact_per_1sigma_eur_per_mwh, 1)} €/MWh`;
+      resizeLabelChip(code);
       setLabelTheme(code, fg);
     });
   }
@@ -372,7 +439,7 @@ async function loadMapAsset() {
       return;
     }
     const market = currentMarkets()[state.market];
-    if (!market) {
+    if (!market || !market.available) {
       detailOverlay.hidden = true;
       return;
     }
@@ -380,17 +447,33 @@ async function loadMapAsset() {
     detailMarketName.textContent = market.name;
     detailPeriodDriver.textContent = `${data.periods[state.period].label} · ${data.drivers[state.driver].label}`;
     detailImpact.textContent = `${formatNumber(market.impact_per_1sigma_eur_per_mwh, 1)} €/MWh`;
-    detailReferenceLabel.textContent = market.reference_label;
+    detailReferenceLabel.textContent = market.reference_label ?? "Reference";
     detailReferenceValue.textContent = market.reference_value_mw == null ? "n/a" : formatReferenceGw(market.reference_value_mw);
-    detailSensitivity.textContent = market.sensitivity_eur_per_mwh_per_gw == null
-      ? "n/a"
-      : `${formatNumber(market.sensitivity_eur_per_mwh_per_gw, 1)} €/MWh/GW`;
+    if (market.spread_distortion_warning && market.warning_text) {
+      detailWarning.hidden = false;
+      detailWarningText.textContent = market.warning_text;
+    } else {
+      detailWarning.hidden = true;
+      detailWarningText.textContent = "";
+    }
   }
 
   function normalizeSelectedMarket() {
-    if (state.market && !currentMarkets()[state.market]) {
-      state.market = null;
+    if (state.market) {
+      const market = currentMarkets()[state.market];
+      if (!market || !market.available) {
+        state.market = null;
+      }
     }
+  }
+
+  function selectMarket(code) {
+    const market = currentMarkets()[code];
+    if (!market || !market.available) {
+      state.market = null;
+      return;
+    }
+    state.market = code;
   }
 
   function renderDriverButtons() {
@@ -414,14 +497,45 @@ async function loadMapAsset() {
 
   function renderPeriodOptions() {
     periodSelect.innerHTML = "";
-    for (const period of periodOrder) {
-      const option = document.createElement("option");
-      option.value = period;
-      option.textContent = data.periods[period].label;
-      if (period === state.period) {
-        option.selected = true;
+    const seasonTypes = new Set(["winter", "spring", "summer", "autumn"]);
+    const groups = {
+      overview: [],
+      years: [],
+      seasons: [],
+    };
+
+    for (const period of periodEntries) {
+      if (period.type === "all") {
+        groups.overview.push(period);
+      } else if (period.type === "year") {
+        groups.years.push(period);
+      } else if (seasonTypes.has(period.type)) {
+        groups.seasons.push(period);
       }
+    }
+
+    for (const period of groups.overview) {
+      const option = document.createElement("option");
+      option.value = period.code;
+      option.textContent = period.label;
+      option.selected = period.code === state.period;
       periodSelect.appendChild(option);
+    }
+
+    for (const [label, periods] of [["Years", groups.years], ["Seasons", groups.seasons]]) {
+      if (!periods.length) {
+        continue;
+      }
+      const optgroup = document.createElement("optgroup");
+      optgroup.label = label;
+      for (const period of periods) {
+        const option = document.createElement("option");
+        option.value = period.code;
+        option.textContent = period.label;
+        option.selected = period.code === state.period;
+        optgroup.appendChild(option);
+      }
+      periodSelect.appendChild(optgroup);
     }
     periodSelect.addEventListener("change", (event) => {
       state.period = event.target.value;
