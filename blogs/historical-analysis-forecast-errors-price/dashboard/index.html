@@ -66,7 +66,10 @@
           </div>
 
           <p class="map-footnote">
-            * Estimated average difference between the imbalance price and the day-ahead price associated with a forecast error equal to one standard deviation of the selected variable. Units are €/MWh per 1 standard deviation of forecast error.
+            * Estimated change in the imbalance-minus-day-ahead spread associated with a positive forecast error equal to one standard deviation of the selected variable. Positive values mean the spread tends to increase; negative values mean it tends to decrease. Units are €/MWh per 1 standard deviation of forecast error.
+          </p>
+          <p class="map-footnote">
+            Example for wind: if the day-ahead price is 50 €/MWh and the wind 1σ impact is -30 €/MWh, a positive 1σ wind forecast error means the imbalance price is estimated around 20 €/MWh rather than 50 €/MWh.
           </p>
         </div>
 
