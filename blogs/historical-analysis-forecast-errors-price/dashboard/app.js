@@ -70,7 +70,6 @@ async function loadMapAsset() {
   const labelAnchors = {};
   const labelGroups = {};
   const valueNodes = {};
-  const codeNodes = {};
   const viewState = {
     scale: 1,
     tx: 0,
@@ -194,36 +193,10 @@ async function loadMapAsset() {
   }
 
   function setLabelTheme(code, foreground) {
-    const group = labelGroups[code];
-    group.querySelector(".label-chip").setAttribute("fill", "rgba(255, 255, 255, 0.88)");
-    group.querySelector(".label-code").setAttribute("fill", foreground);
-    group.querySelector(".label-value").setAttribute("fill", foreground);
-  }
-
-  function resizeLabelChip(code) {
-    const group = labelGroups[code];
-    const codeText = codeNodes[code];
     const valueText = valueNodes[code];
-    if (!group || !codeText || !valueText) {
-      return;
+    if (valueText) {
+      valueText.setAttribute("fill", foreground);
     }
-    const rect = group.querySelector(".label-chip");
-    if (!rect) {
-      return;
-    }
-
-    const codeBox = codeText.getBBox();
-    const valueBox = valueText.getBBox();
-    const leftPad = 14;
-    const rightPad = 14;
-    const topPad = 8;
-    const bottomPad = 10;
-    const maxWidth = Math.max(codeBox.width, valueBox.width);
-
-    rect.setAttribute("x", String(-leftPad));
-    rect.setAttribute("y", String(-topPad));
-    rect.setAttribute("width", String(Math.ceil(maxWidth + leftPad + rightPad)));
-    rect.setAttribute("height", String(Math.ceil(valueBox.y + valueBox.height + bottomPad + topPad)));
   }
 
   function updateLabelTransform(code) {
@@ -248,8 +221,8 @@ async function loadMapAsset() {
       leader.setAttribute("class", "leader-line");
       leader.setAttribute("x1", label.x);
       leader.setAttribute("y1", label.y);
-      leader.setAttribute("x2", x + 10);
-      leader.setAttribute("y2", y + 18);
+      leader.setAttribute("x2", x);
+      leader.setAttribute("y2", y);
       labelLayer.appendChild(leader);
     }
 
@@ -257,29 +230,19 @@ async function loadMapAsset() {
     group.setAttribute("class", "market-label");
     group.setAttribute("id", `label-${code}`);
 
-    const rect = svgEl("rect");
-    rect.setAttribute("class", "label-chip");
-    rect.setAttribute("rx", "14");
-
-    const codeText = svgEl("text");
-    codeText.setAttribute("class", "label-code");
-    codeText.setAttribute("x", "0");
-    codeText.setAttribute("y", "14");
-    codeText.textContent = code;
-
     const valueText = svgEl("text");
-    valueText.setAttribute("class", "label-value");
+    valueText.setAttribute("class", "market-value");
     valueText.setAttribute("x", "0");
-    valueText.setAttribute("y", "38");
-    valueText.textContent = "0.0";
+    valueText.setAttribute("y", "0");
+    valueText.setAttribute("text-anchor", "middle");
+    valueText.setAttribute("dominant-baseline", "middle");
+    valueText.textContent = "0.0 €/MWh";
 
-    group.append(rect, codeText, valueText);
+    group.append(valueText);
     labelLayer.appendChild(group);
     labelAnchors[code] = { x, y };
     labelGroups[code] = group;
-    codeNodes[code] = codeText;
     valueNodes[code] = valueText;
-    resizeLabelChip(code);
     updateLabelTransform(code);
   }
 
@@ -428,7 +391,6 @@ async function loadMapAsset() {
       marketNodes[code].classList.remove("is-unavailable");
       labelGroups[code].style.display = "";
       valueNodes[code].textContent = `${formatNumber(market.impact_per_1sigma_eur_per_mwh, 1)} €/MWh`;
-      resizeLabelChip(code);
       setLabelTheme(code, fg);
     });
   }
